@@ -1,0 +1,8 @@
+<p>
+  login works!
+</p>
+<form [formGroup]="logInForm" (ngSubmit)="onSubmit()">
+  Usuario: <input type="text" formControlName="userName" /><br />
+  Password: <input type="password" formControlName="userPassword" />
+  <button type="submit" [disabled]="!logInForm.valid">Ingresar</button>
+</form>
