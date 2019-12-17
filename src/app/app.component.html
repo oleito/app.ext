@@ -1,6 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<!-- <div style="text-align:center" *ngIf="router.url != '/login' && router.url != '/kpi/kpioperarios'"> -->
-<div style="text-align:center" *ngIf="router.url != '/login'">
-  <h2>Un menu por aca.</h2>
+<div *ngIf="router.url != '/login'">
+  <app-header></app-header>
 </div>
 <router-outlet></router-outlet>
