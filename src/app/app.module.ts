@@ -9,11 +9,13 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './componentes/login/login.component';
 import { AuthenticationInterceptor } from './services/authentication.interceptor';
 import { HeaderComponent } from './componentes/header/header.component';
+import { HomeComponent } from './componentes/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    HomeComponent
     HeaderComponent
   ],
   imports: [
