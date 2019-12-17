@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class TokenService {
   header: string = null;
@@ -13,10 +13,10 @@ export class TokenService {
 
   decodeToken(token: string) {
     /** Corta el token en 3 partes. header.payload.signature */
-    var tokenDividido = token.split(".");
+    const tokenDividido = token.split('.');
     this.payload = tokenDividido[1];
 
-    var base64 = this.payload.replace("-", "+").replace("_", "/");
+    const base64 = this.payload.replace('-', '+').replace('_', '/');
     this.payloadDecoded = JSON.parse(window.atob(base64));
 
     return this.payloadDecoded;

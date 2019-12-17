@@ -54,7 +54,7 @@ export class AuthenticationInterceptor implements HttpInterceptor {
                   localStorage.setItem('nombre', this.tokenService.decodeToken(event.body['token'])['nombre']);
 
                   this.authenticationService.isLoggedIn = true;
-                  this.router.navigate(['/home']);
+                  // this.router.navigate(['/home']);
                   break;
 
                 default:

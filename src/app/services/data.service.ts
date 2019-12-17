@@ -11,7 +11,7 @@ export class DataService {
 
   constructor(private httpClient: HttpClient) {
 
-    this.apiUrl = 'https://localhost/Proyectos/api.ext/public/'; // SERVIDOR LOCAL
+    this.apiUrl = 'http://localhost/Proyectos/api.ext/public/'; // SERVIDOR LOCAL
     // this.apiUrl = "http://api.parisautos.com.ar/public/";// servidor REMOTO
 
   }
