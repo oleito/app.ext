@@ -11,14 +11,9 @@ export class AuthenticationService {
 
   constructor(private dataService: DataService) {}
 
-  getStatus() {
-    return this.isLoggedIn;
-  }
-
   loginWithEmail(data: any): Observable<any> {
     console.log('loginWhitEmail');
     return this.dataService.postData('login', data);
   }
 
-  logOut() {}
 }

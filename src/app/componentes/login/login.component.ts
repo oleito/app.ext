@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { UserLogin, DataLogin } from 'src/app/interfaces/userLogin';
+import { UserLogin } from 'src/app/interfaces/userLogin';
+import { DataLogin } from 'src/app/interfaces/DataLogin';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { HttpResponse } from '@angular/common/http';
 
@@ -12,6 +13,8 @@ import { HttpResponse } from '@angular/common/http';
 export class LoginComponent implements OnInit {
 
   isLogedIn = false;
+  tryingLogIn = false;
+  logInErr = false;
   error: any;
 
   constructor(private authenticationService: AuthenticationService) { }
@@ -25,6 +28,9 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+
+    this.tryingLogIn = true;
+    this.logInErr = false;
     let datos: DataLogin;
     const user: UserLogin = this.logInForm.value;
 
@@ -43,15 +49,21 @@ export class LoginComponent implements OnInit {
         userPassword: '1q2w3eparisNadarisca32'
       }
     };
+
+
     console.log(user);
     console.log(datos);
 
     this.authenticationService.loginWithEmail(datos).subscribe((res: HttpResponse<any>) => {
+      console.log(res);
       console.log(res.body);
       this.isLogedIn = true;
+      this.tryingLogIn = false;
     }, err => {
       console.log(err);
       this.isLogedIn = false;
+      this.tryingLogIn = false;
+      this.logInErr = true;
     });
   }
 
