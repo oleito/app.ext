@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-modelo',
@@ -8,6 +9,10 @@ import { Component, OnInit } from '@angular/core';
 export class ModeloComponent implements OnInit {
 
   constructor() { }
+
+  modeloForm = new FormGroup({
+    modelo: new FormControl('', Validators.required)
+  });
 
   ngOnInit() {
   }
