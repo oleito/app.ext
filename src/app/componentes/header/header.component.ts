@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,16 @@ export class HeaderComponent implements OnInit {
 
   constructor() { }
 
+  headerSearchForm = new FormGroup(
+    {
+      dataToSearch: new FormControl('', [Validators.required])
+    }
+  );
+
   ngOnInit() {
+  }
+  onSubmit() {
+    console.log(this.headerSearchForm.value);
   }
 
 }
