@@ -1,3 +1,49 @@
-<p>
-  modelo works!
-</p>
+<main role="main" class="container">
+  <form [formGroup]="modeloForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col">
+        <h5>Marca</h5>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Marca</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>Peugeot</option>
+            <option>Citroën</option>
+            <option>VolksWagen</option>
+            <option>Ford</option>
+            <option>Chevrolet</option>
+          </select>
+        </div>
+      </div>
+      <div class="col">
+        <h5>Modelo</h5>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Marca</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>3008</option>
+            <option>2008</option>
+            <option>401</option>
+            <option></option>
+            <option></option>
+          </select>
+        </div>
+      </div>
+      <div class="col">
+        <h5>Tipo carroceria</h5>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Marca</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>Sedan 4 ptas</option>
+            <option>Sedan 5 ptas</option>
+            <option>Coupe 3 ptas</option>
+            <option>Station Wagon</option>
+            <option>Utilitario</option>
+            <option>PickUp</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="row">
+    
+  </div>
+</main>

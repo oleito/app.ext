@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
   }
+  
   onSubmit() {
     console.log(this.headerSearchForm.value);
   }
