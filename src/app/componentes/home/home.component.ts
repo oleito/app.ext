@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     // for dev only
-    //this.router.navigate(['/modelo']);
+    this.router.navigate(['/modelo']);
   }
 
 }

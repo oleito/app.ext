@@ -1,49 +1,221 @@
-<main role="main" class="container">
+<main role="main" class="container mt-5">
   <form [formGroup]="modeloForm" (ngSubmit)="onSubmit()">
     <div class="row">
       <div class="col">
         <h5>Marca</h5>
         <div class="form-group">
-          <label for="exampleFormControlSelect1">Marca</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>Peugeot</option>
-            <option>Citroën</option>
-            <option>VolksWagen</option>
+          <select
+            class="form-control"
+            (change)="onMarcaChange()"
+            formControlName="marca"
+          >
+            <option value="1">Peugeot - PE</option>
+            <option value="2">Citroën - CI</option>
+            <option value="3">VolksWagen - VW</option>
             <option>Ford</option>
             <option>Chevrolet</option>
           </select>
         </div>
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="btn btn-primary btn-sm btn-block"
+          data-toggle="modal"
+          data-target="#agregarMarca"
+        >
+          Agregar Marca
+        </button>
       </div>
       <div class="col">
-        <h5>Modelo</h5>
+        <h5 class=" justify-content-between">Modelo</h5>
         <div class="form-group">
-          <label for="exampleFormControlSelect1">Marca</label>
-          <select class="form-control" id="exampleFormControlSelect1">
+          <select
+            class="form-control"
+            (change)="onModeloChange()"
+            formControlName="modelo"
+          >
             <option>3008</option>
             <option>2008</option>
             <option>401</option>
-            <option></option>
-            <option></option>
+            <option>407</option>
           </select>
         </div>
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="btn btn-primary btn-sm btn-block"
+          data-toggle="modal"
+          data-target="#agregarModelo"
+        >
+          Agregar Modelo
+        </button>
       </div>
       <div class="col">
         <h5>Tipo carroceria</h5>
-        <div class="form-group">
-          <label for="exampleFormControlSelect1">Marca</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>Sedan 4 ptas</option>
-            <option>Sedan 5 ptas</option>
-            <option>Coupe 3 ptas</option>
-            <option>Station Wagon</option>
-            <option>Utilitario</option>
-            <option>PickUp</option>
-          </select>
+        <img
+          src="https://placehold.it/350x220"
+          class="img-fluid"
+          *ngIf="!loadingCarroceria"
+        />
+
+        <div class="d-flex justify-content-center" *ngIf="loadingCarroceria">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
         </div>
       </div>
     </div>
   </form>
-  <div class="row">
-    
-  </div>
+  <div class="row"></div>
 </main>
+
+<!-- Modal Marca -->
+<div
+  class="modal fade"
+  id="agregarMarca"
+  data-backdrop="static"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="agregarMarcaLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="agregarMarcaLabel">Agregar Marca</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- FURMULARIO AREGAR MARCA -->
+        <form [formGroup]="agregarMarcaForm">
+          <div class="form-row">
+            <div class="form-group col-md-8">
+              <label for="marca">Marca</label>
+              <input
+                type="text"
+                class="form-control"
+                id="marca"
+                formControlName="marca"
+                autocomplete="off" 
+              />
+            </div>
+            <div class="form-group col-md-4">
+              <label for="marcaIniciales">Iniciales</label>
+              <input
+                type="text"
+                class="form-control"
+                id="marcaIniciales"
+                formControlName="marcaIniciales"
+                autocomplete="off" 
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">
+          Cancelar
+        </button>
+        <button
+          type="submit"
+          class="btn btn-success"
+          data-dismiss="modal"
+          [disabled]="!agregarMarcaForm.valid"
+        >
+          Agregar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Modelo -->
+<div
+  class="modal fade"
+  id="agregarModelo"
+  data-backdrop="static"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="agregarModeloLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="agregarModeloLabel">Agregar Modelo</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- FURMULARIO AREGAR MODELO -->
+        <form [formGroup]="agregarModeloForm">
+          <div class="form-group">
+            <label for="modelo">Modelo</label>
+            <input
+              type="text"
+              class="form-control"
+              id="modelo"
+              formControlName="modelo"
+              autocomplete="off" 
+            />
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="marca2">Marca</label>
+              <select class="form-control" id="marca2" formControlName="marca2">
+                <option value="1">Peugeot - PE</option>
+                <option value="2">Citroën - CI</option>
+                <option value="3">VolksWagen - VW</option>
+              </select>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="carroceria">Carroceria</label>
+              <select
+                id="carroceria"
+                class="form-control"
+                formControlName="tipo"
+                (change)="onChangeCarroceria()"
+              >
+                <option value="1">Sedan 4ptas</option>
+                <option value="2">Sedan 5ptas</option>
+                <option value="3">PickUp</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row" *ngIf="agregarModeloForm.value.tipo">
+            <div class="col">
+              <img src="https://placehold.it/466x210" class="img-fluid">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-success"
+          data-dismiss="modal"
+          [disabled]="!agregarModeloForm.valid"
+        >
+          Save changes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
