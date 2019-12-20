@@ -1,5 +1,346 @@
-<main role="main" class="container-fluid">
-  <p>
-    seguimiento works!
-  </p>
+<main role="main" class="container MT-3">
+  <div class="row  justify-content-end">
+    <button
+      type="button"
+      class="btn btn-success"
+      data-toggle="modal"
+      data-target="#modalNuevoSeguimiento"
+    >
+      Nuevo Seguimiento
+    </button>
+  </div>
+  <div class="row bg-light py-3 mt-2">
+    <div class="col">
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="inlineCheckbox1"
+          value="option1"
+        />
+        <label class="form-check-label" for="inlineCheckbox1">Cotizacion</label>
+      </div>
+    </div>
+    <div class="col border-left">
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="inlineCheckbox2"
+          value="option2"
+        />
+        <label class="form-check-label" for="inlineCheckbox2">Ingreso</label>
+      </div>
+    </div>
+    <div class="col border-left">
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="inlineCheckbox3"
+          value="option1"
+        />
+        <label class="form-check-label" for="inlineCheckbox3">Chapa</label>
+      </div>
+    </div>
+    <div class="col border-left">
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="inlineCheckbox4"
+          value="option1"
+        />
+        <label class="form-check-label" for="inlineCheckbox4"
+          >Preparacion</label
+        >
+      </div>
+    </div>
+    <div class="col border-left">
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="inlineCheckbox5"
+          value="option1"
+        />
+        <label class="form-check-label" for="inlineCheckbox5">Pintura</label>
+      </div>
+    </div>
+    <div class="col border-left">
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="inlineCheckbox6"
+          value="option1"
+        />
+        <label class="form-check-label" for="inlineCheckbox6">Armado</label>
+      </div>
+    </div>
+    <div class="col border-left">
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="inlineCheckbox7"
+          value="option1"
+        />
+        <label class="form-check-label" for="inlineCheckbox7">Detailing</label>
+      </div>
+    </div>
+    <div class="col border-left">
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="inlineCheckbox8"
+          value="option1"
+        />
+        <label class="form-check-label" for="inlineCheckbox8">Terminado</label>
+      </div>
+    </div>
+    <div class="col border-left">
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="inlineCheckbox9"
+          value="option1"
+        />
+        <label class="form-check-label" for="inlineCheckbox9">Entrega</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th scope="col">Marca</th>
+          <th scope="col">Modelo</th>
+          <th scope="col">Dominio</th>
+          <th scope="col">Sector Actual</th>
+          <th scope="col">Fecha Ingreso</th>
+          <th scope="col">Horas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Peugeot</td>
+          <td>401</td>
+          <td>PMK 802</td>
+          <td>Detailin</td>
+          <td>12/12/2020</td>
+          <td>23Hs</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </main>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="modalNuevoSeguimiento"
+  data-backdrop="static"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form [formGroup]="seguimientoForm">
+          <ul class="nav nav-tabs" id="seguimientosTab" role="tablist">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                id="vehiculo-tab"
+                data-toggle="tab"
+                href="#vehiculo"
+                role="tab"
+                aria-controls="vehiculo"
+                aria-selected="true"
+                >Vehiculo</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="piezas-tab"
+                data-toggle="tab"
+                href="#piezas"
+                role="tab"
+                aria-controls="piezas"
+                aria-selected="false"
+                >Piezas</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="contact-tab"
+                data-toggle="tab"
+                href="#contact"
+                role="tab"
+                aria-controls="contact"
+                aria-selected="false"
+                >Contact</a
+              >
+            </li>
+          </ul>
+
+          <div class="tab-content pt-3" id="seguimientosTabContent">
+            <div
+              class="tab-pane fade show active"
+              id="vehiculo"
+              role="tabpanel"
+              aria-labelledby="vehiculo-tab"
+            >
+              <div class="form-row">
+                <div class="col">
+                  <label for="inputMarca">Modelo</label>
+                  <select
+                    id="inputMarca"
+                    class="form-control"
+                    (change)="onMarcaChange()"
+                    formControlName="marca"
+                  >
+                    <option value="1">Peugeot - PE</option>
+                    <option value="2">Citroën - CI</option>
+                    <option value="3">VolksWagen - VW</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label for="inputModelo">Modelo</label>
+                    <select
+                      id="inputModelo"
+                      class="form-control"
+                      (change)="onModeloChange()"
+                      formControlName="modelo"
+                    >
+                      <option>3008</option>
+                      <option>2008</option>
+                      <option>401</option>
+                      <option>407</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col">
+                  <label for="inputDominio">Patente</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputDominio"
+                    formControlName="patente"
+                  />
+                </div>
+                <div class="form-group col">
+                  <label for="inputSeguro">Seguro</label>
+                  <select
+                    id="inputSeguro"
+                    class="form-control"
+                    formControlName="seguro"
+                  >
+                    <option>La caja</option>
+                    <option>Sura</option>
+                    <option>Sancord</option>
+                    <option>La segunda</option>
+                  </select>
+                </div>
+                <div class="form-group col">
+                  <label for="inputOrden">Orden</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputOrden"
+                    formControlName="orden"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="tab-pane fade"
+              id="piezas"
+              role="tabpanel"
+              aria-labelledby="piezas-tab"
+            >
+              <div class="form-row justify-content-end">
+                <button type="button" class="btn btn-success">
+                  Agregar
+                </button>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col">
+                  <label for="inputPieza">Pieza</label>
+                  <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    id="inputPieza"
+                    formControlName="pieza"
+                  />
+                </div>
+                <div class="form-group col">
+                  <label for="inputAccion">Accion</label>
+                  <select
+                    id="inputAccion"
+                    class="form-control form-control-sm"
+                    formControlName="accion"
+                  >
+                    <option>Reemplazar</option>
+                    <option>Pintar</option>
+                    <option>Reparar</option>
+                  </select>
+                </div>
+                <div class="form-group col">
+                  <label for="inputOrden">Orden</label>
+                  <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    id="inputOrden"
+                    formControlName="orden"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="contact"
+              role="tabpanel"
+              aria-labelledby="contact-tab"
+            >
+              ...
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
