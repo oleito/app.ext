@@ -10,7 +10,6 @@ import { LoginComponent } from './componentes/login/login.component';
 import { AuthenticationInterceptor } from './services/authentication.interceptor';
 import { HeaderComponent } from './componentes/header/header.component';
 import { HomeComponent } from './componentes/home/home.component';
-import { VehiculoComponent } from './componentes/vehiculo/vehiculo.component';
 import { SeguimientoComponent } from './componentes/seguimiento/seguimiento.component';
 import { ModeloComponent } from './componentes/modelo/modelo.component';
 import { SegurosComponent } from './componentes/seguros/seguros.component';
@@ -21,7 +20,6 @@ import { SegurosComponent } from './componentes/seguros/seguros.component';
     LoginComponent,
     HomeComponent,
     HeaderComponent,
-    VehiculoComponent,
     SeguimientoComponent,
     ModeloComponent,
     SegurosComponent
