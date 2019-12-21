@@ -314,7 +314,7 @@
                       formControlName="pieza"
                     />
                   </div>
-                  <div class="form-group col-md-5">
+                  <div class="form-group col-md-3">
                     <select
                       class="form-control form-control-sm"
                       formControlName="accion"
@@ -323,6 +323,24 @@
                       <option>Pintar</option>
                       <option>Reparar</option>
                     </select>
+                  </div>
+                  <div class="col-md-2">
+                    <div
+                      class="btn-toolbar"
+                      role="toolbar"
+                      aria-label="Toolbar with button groups"
+                    >
+                      <div
+                        class="btn-group"
+                        role="group"
+                        aria-label="First group"
+                      >
+                        <button type="button" class="btn btn-sm btn-secondary" (click)="deletePieza(i)">
+                          Eliminar
+                        </button>
+                        
+                      </div>
+                    </div>
                   </div>
                 </ng-container>
               </div>
