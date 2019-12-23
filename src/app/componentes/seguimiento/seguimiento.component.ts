@@ -7,7 +7,7 @@ import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@ang
   styleUrls: ['./seguimiento.component.css']
 })
 export class SeguimientoComponent implements OnInit {
-  
+
 
   seguimientoForm: FormGroup;
   piezas: FormArray;
@@ -24,6 +24,26 @@ export class SeguimientoComponent implements OnInit {
 
       piezas: this.formBuilder.array([])
     });
+  }
+
+  /*################ Registration Form ################*/
+  registrationForm = this.formBuilder.group({
+    nombre:new FormControl(),
+    addDynamicElement: this.formBuilder.array([])
+  })
+
+  /*############### Add Dynamic Elements ###############*/
+  get addDynamicElement() {
+    return this.registrationForm.get('addDynamicElement') as FormArray
+  }
+
+  addItems() {
+    this.addDynamicElement.push(this.formBuilder.control(''))
+  }
+
+  // Submit Registration Form
+  onSubmit() {
+    alert(JSON.stringify(this.registrationForm.value))
   }
 
 
