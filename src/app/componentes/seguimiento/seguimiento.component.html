@@ -1,20 +1,167 @@
 <main role="main" class="container MT-3">
-  <!-- Form starts -->
-<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-   <!-- Add nested items dynamically-->
-   <div class="group-gap" formArrayName="addDynamicElement">
-      <h5 class="mb-3">Add Products</h5>
-      
-       <div class="mb-3">
-         <button type="button" class="btn btn-sm btn-success mb-3 btn-block" (click)="addItems()">Add Items</button>
-         <ul class="subjectList">
-            <li *ngFor="let item of addDynamicElement.controls; let i = index">
-               <input type="text" class="form-control" [formControlName]="i">
-            </li>
-         </ul>
+  <div class="row  justify-content-end">
+    <button
+      type="button"
+      class="btn btn-success"
+      data-toggle="modal"
+      data-target="#modalNuevoSeguimiento"
+    >
+      Nuevo Seguimiento
+    </button>
+  </div>
+  <div class="row bg-light py-3 mt-2">
+    <div class="col">
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="inlineCheckbox1"
+          value="option1"
+        />
+        <label class="form-check-label" for="inlineCheckbox1">Cotizacion</label>
       </div>
+    </div>
+    <div class="col border-left">
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="inlineCheckbox2"
+          value="option2"
+        />
+        <label class="form-check-label" for="inlineCheckbox2">Ingreso</label>
+      </div>
+    </div>
+    <div class="col border-left">
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="inlineCheckbox3"
+          value="option1"
+        />
+        <label class="form-check-label" for="inlineCheckbox3">Chapa</label>
+      </div>
+    </div>
+    <div class="col border-left">
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="inlineCheckbox4"
+          value="option1"
+        />
+        <label class="form-check-label" for="inlineCheckbox4"
+          >Preparacion</label
+        >
+      </div>
+    </div>
+    <div class="col border-left">
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="inlineCheckbox5"
+          value="option1"
+        />
+        <label class="form-check-label" for="inlineCheckbox5">Pintura</label>
+      </div>
+    </div>
+    <div class="col border-left">
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="inlineCheckbox6"
+          value="option1"
+        />
+        <label class="form-check-label" for="inlineCheckbox6">Armado</label>
+      </div>
+    </div>
+    <div class="col border-left">
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="inlineCheckbox7"
+          value="option1"
+        />
+        <label class="form-check-label" for="inlineCheckbox7">Detailing</label>
+      </div>
+    </div>
+    <div class="col border-left">
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="inlineCheckbox8"
+          value="option1"
+        />
+        <label class="form-check-label" for="inlineCheckbox8">Terminado</label>
+      </div>
+    </div>
+    <div class="col border-left">
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="inlineCheckbox9"
+          value="option1"
+        />
+        <label class="form-check-label" for="inlineCheckbox9">Entrega</label>
+      </div>
+    </div>
+  </div>
 
-      <button type="submit" class="btn btn-danger btn-lg btn-block">Submit Form</button>
-   </div>
-</form><!-- Form ends -->
+  <div class="row">
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th scope="col">Marca</th>
+          <th scope="col">Modelo</th>
+          <th scope="col">Dominio</th>
+          <th scope="col">Sector Actual</th>
+          <th scope="col">Fecha Ingreso</th>
+          <th scope="col">Horas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Peugeot</td>
+          <td>401</td>
+          <td>PMK 802</td>
+          <td>Detailin</td>
+          <td>12/12/2020</td>
+          <td>23Hs</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </main>
+<!-- Form starts -->
+<form [formGroup]="seguimientoForm" (ngSubmit)="onSubmit()">
+  <!-- Add nested items dynamically-->
+  <div class="group-gap" formArrayName="addDynamicElement">
+    <h5 class="mb-3">Add Products</h5>
+
+    <div class="mb-3">
+      <button
+        type="button"
+        class="btn btn-sm btn-success mb-3 btn-block"
+        (click)="addItems()"
+      >
+        Add Items
+      </button>
+      <ul class="subjectList">
+        <li *ngFor="let item of addDynamicElement.controls; let i = index">
+          <input type="text" class="form-control" [formControlName]="i" />
+        </li>
+      </ul>
+    </div>
+
+    <button type="submit" class="btn btn-danger btn-lg btn-block">
+      Submit Form
+    </button>
+  </div>
+</form>
+<!-- Form ends -->

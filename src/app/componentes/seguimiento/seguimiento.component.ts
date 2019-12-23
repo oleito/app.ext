@@ -7,25 +7,26 @@ import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@ang
   styleUrls: ['./seguimiento.component.css']
 })
 export class SeguimientoComponent {
-  constructor(public fb: FormBuilder) { }
+  constructor(public formBuilder: FormBuilder) { }
 
   /*################ Registration Form ################*/
-  registrationForm = this.fb.group({
-    addDynamicElement: this.fb.array([])
+  seguimientoForm = this.formBuilder.group({
+    addDynamicElement: this.formBuilder.array([])
   });
 
   /*############### Add Dynamic Elements ###############*/
   get addDynamicElement() {
-    return this.registrationForm.get('addDynamicElement') as FormArray
+    return this.seguimientoForm.get('addDynamicElement') as FormArray
   }
 
   addItems() {
-    this.addDynamicElement.push(this.fb.control(''))
+    this.addDynamicElement.push(this.formBuilder.control('', Validators.required));
   }
 
   // Submit Registration Form
   onSubmit() {
-    alert(JSON.stringify(this.registrationForm.value))
+    console.log(this.seguimientoForm.valid);
+    console.log(this.seguimientoForm.value);
   }
 
 }
