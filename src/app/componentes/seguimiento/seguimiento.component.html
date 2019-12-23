@@ -141,24 +141,67 @@
 <!-- Form starts -->
 <form [formGroup]="seguimientoForm" (ngSubmit)="onSubmit()">
   <!-- Add nested items dynamically-->
+  <div class="form-group">
+    <label for="inputMarca">Modelo</label>
+    <select id="inputMarca" class="form-control" formControlName="marca">
+      <option value="1">Peugeot - PE</option>
+      <option value="2">Citroën - CI</option>
+      <option value="3">VolksWagen - VW</option>
+    </select>
+  </div>
   <div class="group-gap" formArrayName="addDynamicElement">
-    <h5 class="mb-3">Add Products</h5>
-
     <div class="mb-3">
-      <button
-        type="button"
-        class="btn btn-sm btn-success mb-3 btn-block"
-        (click)="addItems()"
-      >
-        Add Items
-      </button>
       <ul class="subjectList">
         <li *ngFor="let item of addDynamicElement.controls; let i = index">
-          <input type="text" class="form-control" [formControlName]="i" />
+          <!-- inicio -->
+          <ng-container [formGroupName]="i">
+            <div class="form-group col-md-7">
+              <input
+                type="text"
+                class="form-control form-control-sm"
+                formControlName="pieza"
+              />
+            </div>
+            <div class="form-group col-md-3">
+              <select
+                class="form-control form-control-sm"
+                formControlName="accion"
+              >
+                <option>Reemplazar</option>
+                <option>Pintar</option>
+                <option>Reparar</option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <div
+                class="btn-toolbar"
+                role="toolbar"
+                aria-label="Toolbar with button groups"
+              >
+                <div class="btn-group" role="group" aria-label="First group">
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-secondary"
+                    (click)="deletePieza(i)"
+                  >
+                    Eliminar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          <!-- fin -->
+
         </li>
       </ul>
     </div>
-
+    <button
+      type="button"
+      class="btn btn-sm btn-success mb-3 btn-block"
+      (click)="addItems()"
+    >
+      Add Items
+    </button>
     <button type="submit" class="btn btn-danger btn-lg btn-block">
       Submit Form
     </button>
