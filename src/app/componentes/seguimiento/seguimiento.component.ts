@@ -7,6 +7,7 @@ import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@ang
   styleUrls: ['./seguimiento.component.css']
 })
 export class SeguimientoComponent implements OnInit {
+
   seguimientoForm: FormGroup;
 
   constructor(public formBuilder: FormBuilder) { }
@@ -14,15 +15,21 @@ export class SeguimientoComponent implements OnInit {
   ngOnInit() {
     this.seguimientoForm = this.formBuilder.group({
       marca: new FormControl('', Validators.required),
-      addDynamicElement: this.formBuilder.array([])
+      modelo: new FormControl('', Validators.required),
+      patente: new FormControl('', Validators.required),
+      seguro: new FormControl('', Validators.required),
+      orden: new FormControl('', Validators.required),
+      piezas: this.formBuilder.array([]),
+      fechaIngreso: new FormControl('', Validators.required),
+      fechaSalidaAprox: new FormControl('', Validators.required),
+      observaciones: new FormControl('', Validators.required)
     });
-
+    this.addItems();
   }
-  /*################ Registration Form ################*/
 
-  /*############### Add Dynamic Elements ###############*/
-  get addDynamicElement() {
-    return this.seguimientoForm.get('addDynamicElement') as FormArray
+  /*############### De reactive Form ###############*/
+  get piezas() {
+    return this.seguimientoForm.get('piezas') as FormArray
   }
   createItem(): FormGroup {
     return this.formBuilder.group({
@@ -31,17 +38,31 @@ export class SeguimientoComponent implements OnInit {
     });
   }
   deletePieza(i: number) {
-    this.addDynamicElement.removeAt(i);
+    this.piezas.removeAt(i);
   }
-
   addItems() {
-    this.addDynamicElement.push(this.createItem());
+    this.piezas.push(this.createItem());
   }
 
-  // Submit Registration Form
+  /*############# De Control de Acciones #############*/
+  onModeloChange() {
+    console.log('cambio el modelo');
+  }
+  onMarcaChange() {
+    console.log('cambio la marca');
+  }
+
+  /*############### Dubmi del formulario ###############*/
   onSubmit() {
     console.log(this.seguimientoForm.valid);
     console.log(this.seguimientoForm.value);
+  }
+  cargarSeguimiento() {
+    if (this.seguimientoForm.valid) {
+      console.log('valido');
+    } else {
+      console.log('invalido');
+    }
   }
 
 }

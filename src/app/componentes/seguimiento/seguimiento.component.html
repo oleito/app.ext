@@ -1,5 +1,5 @@
-<main role="main" class="container MT-3">
-  <div class="row  justify-content-end">
+<main role="main" class="container mt-3">
+  <div class="row justify-content-end">
     <button
       type="button"
       class="btn btn-success"
@@ -11,17 +11,6 @@
   </div>
   <div class="row bg-light py-3 mt-2">
     <div class="col">
-      <div class="form-check form-check-inline">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="inlineCheckbox1"
-          value="option1"
-        />
-        <label class="form-check-label" for="inlineCheckbox1">Cotizacion</label>
-      </div>
-    </div>
-    <div class="col border-left">
       <div class="form-check form-check-inline">
         <input
           class="form-check-input"
@@ -112,7 +101,6 @@
       </div>
     </div>
   </div>
-
   <div class="row">
     <table class="table table-sm">
       <thead>
@@ -138,73 +126,278 @@
     </table>
   </div>
 </main>
-<!-- Form starts -->
-<form [formGroup]="seguimientoForm" (ngSubmit)="onSubmit()">
-  <!-- Add nested items dynamically-->
-  <div class="form-group">
-    <label for="inputMarca">Modelo</label>
-    <select id="inputMarca" class="form-control" formControlName="marca">
-      <option value="1">Peugeot - PE</option>
-      <option value="2">Citroën - CI</option>
-      <option value="3">VolksWagen - VW</option>
-    </select>
-  </div>
-  <div class="group-gap" formArrayName="addDynamicElement">
-    <div class="mb-3">
-      <ul class="subjectList">
-        <li *ngFor="let item of addDynamicElement.controls; let i = index">
-          <!-- inicio -->
-          <ng-container [formGroupName]="i">
-            <div class="form-group col-md-7">
-              <input
-                type="text"
-                class="form-control form-control-sm"
-                formControlName="pieza"
-              />
-            </div>
-            <div class="form-group col-md-3">
-              <select
-                class="form-control form-control-sm"
-                formControlName="accion"
+
+<!-- Inicio Modal -->
+<div
+  class="modal fade"
+  id="modalNuevoSeguimiento"
+  data-backdrop="static"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Inicio Form -->
+        <form [formGroup]="seguimientoForm" (ngSubmit)="onSubmit()">
+          <!-- Tabs butons -->
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                id="vehiculo-tab"
+                data-toggle="tab"
+                href="#vehiculo"
+                role="tab"
+                aria-controls="vehiculo"
+                aria-selected="true"
+                >Vehiculo</a
               >
-                <option>Reemplazar</option>
-                <option>Pintar</option>
-                <option>Reparar</option>
-              </select>
-            </div>
-            <div class="col-md-2">
-              <div
-                class="btn-toolbar"
-                role="toolbar"
-                aria-label="Toolbar with button groups"
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="piezas-tab"
+                data-toggle="tab"
+                href="#piezas"
+                role="tab"
+                aria-controls="piezas"
+                aria-selected="false"
+                >Piezas</a
               >
-                <div class="btn-group" role="group" aria-label="First group">
-                  <button
-                    type="button"
-                    class="btn btn-sm btn-secondary"
-                    (click)="deletePieza(i)"
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="observaciones-tab"
+                data-toggle="tab"
+                href="#observaciones"
+                role="tab"
+                aria-controls="observaciones"
+                aria-selected="false"
+                >Observaciones</a
+              >
+            </li>
+          </ul>
+          <!-- .Tabs butons -->
+
+          <!-- Tabs Content -->
+          <div class="tab-content pt-3" id="myTabContent">
+            <div
+              class="tab-pane fade show active"
+              id="vehiculo"
+              role="tabpanel"
+              aria-labelledby="vehiculo-tab"
+            >
+              <div class="form-row">
+                <div class="col">
+                  <label for="inputMarca">Marca</label>
+                  <select
+                    id="inputMarca"
+                    class="form-control"
+                    (change)="onMarcaChange()"
+                    formControlName="marca"
                   >
-                    Eliminar
+                    <option value="1">Peugeot - PE</option>
+                    <option value="2">Citroën - CI</option>
+                    <option value="3">VolksWagen - VW</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label for="inputModelo">Modelo</label>
+                    <select
+                      id="inputModelo"
+                      class="form-control"
+                      (change)="onModeloChange()"
+                      formControlName="modelo"
+                    >
+                      <option>3008</option>
+                      <option>2008</option>
+                      <option>401</option>
+                      <option>407</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col">
+                  <label for="inputDominio">Patente</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputDominio"
+                    formControlName="patente"
+                  />
+                </div>
+                <div class="form-group col">
+                  <label for="inputSeguro">Seguro</label>
+                  <select
+                    id="inputSeguro"
+                    class="form-control"
+                    formControlName="seguro"
+                  >
+                    <option>La caja</option>
+                    <option>Sura</option>
+                    <option>Sancord</option>
+                    <option>La segunda</option>
+                  </select>
+                </div>
+                <div class="form-group col">
+                  <label for="inputOrden">Orden</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputOrden"
+                    formControlName="orden"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="piezas"
+              role="tabpanel"
+              aria-labelledby="piezas-tab"
+            >
+              <div class="row mb-2 justify-content-end">
+                <div class="col-md-3"><button
+                  type="button"
+                  class="btn btn-sm btn-success btn-block"
+                  (click)="addItems()"
+                >
+                  Agregar Pieza
+                </button></div>
+                
+              </div>
+              <div class="group-gap" formArrayName="piezas">
+                <div
+                  class="form-row"
+                  *ngFor="let item of piezas.controls; let i = index"
+                >
+                  <!-- inicio -->
+                  <ng-container [formGroupName]="i">
+                    <div class="form-group col-md-7">
+                      <input
+                        type="text"
+                        class="form-control form-control-sm"
+                        formControlName="pieza"
+                      />
+                    </div>
+                    <div class="form-group col-md-3">
+                      <select
+                        class="form-control form-control-sm"
+                        formControlName="accion"
+                      >
+                        <option>Reemplazar</option>
+                        <option>Pintar</option>
+                        <option>Reparar</option>
+                      </select>
+                    </div>
+                    <div class="col-md-2 justify-content-end">
+                      <div
+                        class="btn-toolbar"
+                        role="toolbar"
+                        aria-label="Toolbar with button groups"
+                      >
+                        <div
+                          class="btn-group"
+                          role="group"
+                          aria-label="First group"
+                        >
+                          <button
+                            type="button"
+                            class="btn btn-sm btn-secondary"
+                            (click)="deletePieza(i)"
+                          >
+                            Eliminar
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                  <!-- fin -->
+                </div>
+              </div>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="observaciones"
+              role="tabpanel"
+              aria-labelledby="observaciones-tab"
+            >
+              <div class="form-row">
+                <div class="col">
+                  <label for="fechaIngreso">Ingreso</label>
+                  <input
+                    type="date"
+                    class="form-control form-control-sm"
+                    id="fechaIngreso"
+                    formControlName="fechaIngreso"
+                  />
+                </div>
+                <div class="col">
+                  <label for="fechaSalidaAprox">Entrega Aproximada</label>
+                  <input
+                    type="date"
+                    class="form-control form-control-sm"
+                    id="fechaSalidaAprox"
+                    formControlName="fechaSalidaAprox"
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <label for="exampleFormControlTextarea1">Observaciones</label>
+                <textarea
+                  class="form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+                  formControlName="observaciones"
+                ></textarea>
+              </div>
+
+              <div class="row justify-content-end pt-3">
+                <div class="col-md-2">
+                  <button type="submit" class="btn btn-danger btn-sm btn-block">
+                    Cargar
                   </button>
                 </div>
               </div>
             </div>
-          </ng-container>
-          <!-- fin -->
-
-        </li>
-      </ul>
+          </div>
+          <!-- .Tabs content -->
+        </form>
+        <!-- Fin Form -->
+      </div>
+      <!-- .Modal Body -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          form="seguimientoForm"
+          (click)="cargarSeguimiento()"
+        >
+          Cargar
+        </button>
+      </div>
     </div>
-    <button
-      type="button"
-      class="btn btn-sm btn-success mb-3 btn-block"
-      (click)="addItems()"
-    >
-      Add Items
-    </button>
-    <button type="submit" class="btn btn-danger btn-lg btn-block">
-      Submit Form
-    </button>
   </div>
-</form>
-<!-- Form ends -->
+</div>
+<!-- Fin Modal -->
