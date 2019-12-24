@@ -7,12 +7,10 @@ import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@ang
   styleUrls: ['./seguimiento.component.css']
 })
 export class SeguimientoComponent implements OnInit {
-  
 
   seguimientoForm: FormGroup;
-  piezas: FormArray;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(public formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.seguimientoForm = this.formBuilder.group({
@@ -21,31 +19,50 @@ export class SeguimientoComponent implements OnInit {
       patente: new FormControl('', Validators.required),
       seguro: new FormControl('', Validators.required),
       orden: new FormControl('', Validators.required),
-
-      piezas: this.formBuilder.array([])
+      piezas: this.formBuilder.array([]),
+      fechaIngreso: new FormControl('', Validators.required),
+      fechaSalidaAprox: new FormControl('', Validators.required),
+      observaciones: new FormControl('', Validators.required)
     });
+    this.addItems();
   }
 
-
+  /*############### De reactive Form ###############*/
+  get piezas() {
+    return this.seguimientoForm.get('piezas') as FormArray
+  }
   createItem(): FormGroup {
     return this.formBuilder.group({
       pieza: '',
       accion: ''
     });
   }
-
-  addPieza(): void {
-    this.piezas = this.seguimientoForm.get('piezas') as FormArray;
-    this.piezas.push(this.createItem());
-  }
-
   deletePieza(i: number) {
     this.piezas.removeAt(i);
   }
+  addItems() {
+    this.piezas.push(this.createItem());
+  }
 
-  cargarSeguimiento() {
+  /*############# De Control de Acciones #############*/
+  onModeloChange() {
+    console.log('cambio el modelo');
+  }
+  onMarcaChange() {
+    console.log('cambio la marca');
+  }
+
+  /*############### Dubmi del formulario ###############*/
+  onSubmit() {
     console.log(this.seguimientoForm.valid);
     console.log(this.seguimientoForm.value);
+  }
+  cargarSeguimiento() {
+    if (this.seguimientoForm.valid) {
+      console.log('valido');
+    } else {
+      console.log('invalido');
+    }
   }
 
 }

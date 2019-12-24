@@ -1,5 +1,5 @@
-<main role="main" class="container MT-3">
-  <div class="row  justify-content-end">
+<main role="main" class="container mt-3">
+  <div class="row justify-content-end">
     <button
       type="button"
       class="btn btn-success"
@@ -11,17 +11,6 @@
   </div>
   <div class="row bg-light py-3 mt-2">
     <div class="col">
-      <div class="form-check form-check-inline">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="inlineCheckbox1"
-          value="option1"
-        />
-        <label class="form-check-label" for="inlineCheckbox1">Cotizacion</label>
-      </div>
-    </div>
-    <div class="col border-left">
       <div class="form-check form-check-inline">
         <input
           class="form-check-input"
@@ -112,7 +101,6 @@
       </div>
     </div>
   </div>
-
   <div class="row">
     <table class="table table-sm">
       <thead>
@@ -139,7 +127,7 @@
   </div>
 </main>
 
-<!-- Modal -->
+<!-- Inicio Modal -->
 <div
   class="modal fade"
   id="modalNuevoSeguimiento"
@@ -162,10 +150,11 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-
       <div class="modal-body">
-        <form [formGroup]="seguimientoForm">
-          <ul class="nav nav-tabs" id="seguimientosTab" role="tablist">
+        <!-- Inicio Form -->
+        <form [formGroup]="seguimientoForm" (ngSubmit)="onSubmit()">
+          <!-- Tabs butons -->
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
               <a
                 class="nav-link active"
@@ -193,18 +182,20 @@
             <li class="nav-item">
               <a
                 class="nav-link"
-                id="contact-tab"
+                id="observaciones-tab"
                 data-toggle="tab"
-                href="#contact"
+                href="#observaciones"
                 role="tab"
-                aria-controls="contact"
+                aria-controls="observaciones"
                 aria-selected="false"
-                >Contact</a
+                >Observaciones</a
               >
             </li>
           </ul>
+          <!-- .Tabs butons -->
 
-          <div class="tab-content pt-3" id="seguimientosTabContent">
+          <!-- Tabs Content -->
+          <div class="tab-content pt-3" id="myTabContent">
             <div
               class="tab-pane fade show active"
               id="vehiculo"
@@ -213,7 +204,7 @@
             >
               <div class="form-row">
                 <div class="col">
-                  <label for="inputMarca">Modelo</label>
+                  <label for="inputMarca">Marca</label>
                   <select
                     id="inputMarca"
                     class="form-control"
@@ -277,88 +268,122 @@
                 </div>
               </div>
             </div>
-
             <div
               class="tab-pane fade"
               id="piezas"
               role="tabpanel"
               aria-labelledby="piezas-tab"
             >
-              <div class="form-row pb-2">
-                <div class="col-md-7 align-text-bottom">Pieza</div>
-                <div class="col-md-3 align-text-bottom">Accion</div>
+              <div class="row mb-2 justify-content-end">
+                <div class="col-md-3"><button
+                  type="button"
+                  class="btn btn-sm btn-success btn-block"
+                  (click)="addItems()"
+                >
+                  Agregar Pieza
+                </button></div>
+                
+              </div>
+              <div class="group-gap" formArrayName="piezas">
+                <div
+                  class="form-row"
+                  *ngFor="let item of piezas.controls; let i = index"
+                >
+                  <!-- inicio -->
+                  <ng-container [formGroupName]="i">
+                    <div class="form-group col-md-7">
+                      <input
+                        type="text"
+                        class="form-control form-control-sm"
+                        formControlName="pieza"
+                      />
+                    </div>
+                    <div class="form-group col-md-3">
+                      <select
+                        class="form-control form-control-sm"
+                        formControlName="accion"
+                      >
+                        <option>Reemplazar</option>
+                        <option>Pintar</option>
+                        <option>Reparar</option>
+                      </select>
+                    </div>
+                    <div class="col-md-2 justify-content-end">
+                      <div
+                        class="btn-toolbar"
+                        role="toolbar"
+                        aria-label="Toolbar with button groups"
+                      >
+                        <div
+                          class="btn-group"
+                          role="group"
+                          aria-label="First group"
+                        >
+                          <button
+                            type="button"
+                            class="btn btn-sm btn-secondary"
+                            (click)="deletePieza(i)"
+                          >
+                            Eliminar
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                  <!-- fin -->
+                </div>
+              </div>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="observaciones"
+              role="tabpanel"
+              aria-labelledby="observaciones-tab"
+            >
+              <div class="form-row">
+                <div class="col">
+                  <label for="fechaIngreso">Ingreso</label>
+                  <input
+                    type="date"
+                    class="form-control form-control-sm"
+                    id="fechaIngreso"
+                    formControlName="fechaIngreso"
+                  />
+                </div>
+                <div class="col">
+                  <label for="fechaSalidaAprox">Entrega Aproximada</label>
+                  <input
+                    type="date"
+                    class="form-control form-control-sm"
+                    id="fechaSalidaAprox"
+                    formControlName="fechaSalidaAprox"
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <label for="exampleFormControlTextarea1">Observaciones</label>
+                <textarea
+                  class="form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+                  formControlName="observaciones"
+                ></textarea>
+              </div>
+
+              <div class="row justify-content-end pt-3">
                 <div class="col-md-2">
-                  <button
-                    type="button"
-                    class="btn btn-success btn-block btn-sm"
-                    (click)="addPieza()"
-                  >
-                    Agregar
+                  <button type="submit" class="btn btn-danger btn-sm btn-block">
+                    Cargar
                   </button>
                 </div>
               </div>
-              <!-- INICIO -->
-              <div
-                class="form-row"
-                formArrayName="piezas"
-                *ngFor="
-                  let piez of seguimientoForm.controls.piezas?.value;
-                  let i = index
-                "
-              >
-                <ng-container [formGroupName]="i">
-                  <div class="form-group col-md-7">
-                    <input
-                      type="text"
-                      class="form-control form-control-sm"
-                      formControlName="pieza"
-                    />
-                  </div>
-                  <div class="form-group col-md-3">
-                    <select
-                      class="form-control form-control-sm"
-                      formControlName="accion"
-                    >
-                      <option>Reemplazar</option>
-                      <option>Pintar</option>
-                      <option>Reparar</option>
-                    </select>
-                  </div>
-                  <div class="col-md-2">
-                    <div
-                      class="btn-toolbar"
-                      role="toolbar"
-                      aria-label="Toolbar with button groups"
-                    >
-                      <div
-                        class="btn-group"
-                        role="group"
-                        aria-label="First group"
-                      >
-                        <button type="button" class="btn btn-sm btn-secondary" (click)="deletePieza(i)">
-                          Eliminar
-                        </button>
-                        
-                      </div>
-                    </div>
-                  </div>
-                </ng-container>
-              </div>
-              <!-- FIN -->
-            </div>
-
-            <div
-              class="tab-pane fade"
-              id="contact"
-              role="tabpanel"
-              aria-labelledby="contact-tab"
-            >
-              ...
             </div>
           </div>
+          <!-- .Tabs content -->
         </form>
+        <!-- Fin Form -->
       </div>
-
+      <!-- .Modal Body -->
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
           Close
@@ -366,6 +391,7 @@
         <button
           type="button"
           class="btn btn-primary"
+          form="seguimientoForm"
           (click)="cargarSeguimiento()"
         >
           Cargar
@@ -374,3 +400,4 @@
     </div>
   </div>
 </div>
+<!-- Fin Modal -->
