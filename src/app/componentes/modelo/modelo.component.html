@@ -11,7 +11,7 @@
             [attr.disabled]="loadingMarcas ? '' : null"
           >
             <option *ngFor="let marca of marcas" [value]="marca.idvhMarca">
-              {{marca.vhMarca}} - {{marca.vhIniciales}}
+              {{ marca.vhMarca }} - {{ marca.vhIniciales }}
             </option>
           </select>
         </div>
@@ -34,9 +34,9 @@
             formControlName="modelo"
             [attr.disabled]="loadingModelos ? '' : null"
           >
-          <option *ngFor="let modelo of modelos" [value]="modelo.idvhModelo">
-            {{modelo.vhModelo}}
-          </option>
+            <option *ngFor="let modelo of modelos" [value]="modelo.idvhModelo">
+              {{ modelo.vhModelo }}
+            </option>
           </select>
         </div>
         <!-- Button trigger modal -->
@@ -52,7 +52,7 @@
       <div class="col">
         <h5>Tipo carroceria</h5>
         <img
-          src="https://placehold.it/350x220"
+          src="{{ urlTipoCarroceriaHome }}"
           class="img-fluid"
           *ngIf="!loadingCarroceria"
         />
@@ -81,9 +81,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>La Segunda</td>
+          <tr *ngFor="let seguro of seguros; let i = index">
+            <th scope="row">{{ i+1 }}</th>
+            <td>{{ seguro.seguro }}</td>
             <td>Otto</td>
           </tr>
         </tbody>
@@ -102,10 +102,7 @@
             />
           </div>
           <div class="col-md-4">
-            <button
-              type="submit"
-              class="btn btn-primary btn-sm btn-block"
-            >
+            <button type="submit" class="btn btn-primary btn-sm btn-block">
               Agregar Seguro
             </button>
           </div>
@@ -114,6 +111,7 @@
     </div>
   </div>
 </main>
+<!--######### FIN MAIN #########-->
 
 <!-- Modal Marca -->
 <div
@@ -224,7 +222,7 @@
               <label for="marca2">Marca</label>
               <select class="form-control" id="marca2" formControlName="marca2">
                 <option *ngFor="let marca of marcas" [value]="marca.idvhMarca">
-                  {{marca.vhMarca}} - {{marca.vhIniciales}}
+                  {{ marca.vhMarca }} - {{ marca.vhIniciales }}
                 </option>
               </select>
             </div>
@@ -236,16 +234,19 @@
                 formControlName="tipo"
                 (change)="onChangeCarroceria()"
               >
-              <option *ngFor="let tipo of carrocerias" [value]="tipo.idvhTipo">
-                {{tipo.vhTipo}}
-              </option>
+                <option
+                  *ngFor="let tipo of carrocerias"
+                  [value]="tipo.idvhTipo"
+                >
+                  {{ tipo.vhTipo }}
+                </option>
               </select>
             </div>
           </div>
 
           <div class="row" *ngIf="agregarModeloForm.value.tipo">
             <div class="col" *ngIf="!loadingCarroceria">
-              <img src="https://placehold.it/466x210" class="img-fluid" />
+              <img src="{{ urlTipoCarroceriaForm }}" class="img-fluid" />
             </div>
           </div>
           <div

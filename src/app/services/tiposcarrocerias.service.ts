@@ -11,5 +11,12 @@ export class TiposcarroceriasService {
     console.log('getTipos');
     return this.dataService.getData('tipo');
   }
-
+  getTipoByModelo(modelo) {
+    console.log('getTiposByModelo');
+    return this.dataService.getData('tipo?modelo=' + modelo);
+  }
+  getTipoById(id) {
+    console.log('getTiposById');
+    return this.dataService.getData('tipo?id=' + id);
+  }
 }

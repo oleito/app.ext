@@ -19,7 +19,7 @@ export class DataService {
   /**
    * Se declaran los metodos que nos conectaran con la API Rest
    */
-  
+
   getData(section: string): Observable<any> {
     console.log(this.apiUrl);
     return this.httpClient.get(this.apiUrl + section);
@@ -39,4 +39,5 @@ export class DataService {
     console.log(this.apiUrl);
     return this.httpClient.delete(this.apiUrl + section);
   }
+
 }

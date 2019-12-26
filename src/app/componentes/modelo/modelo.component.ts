@@ -4,6 +4,7 @@ import { HttpResponse } from '@angular/common/http';
 import { MarcaService } from 'src/app/services/marca.service';
 import { TiposcarroceriasService } from 'src/app/services/tiposcarrocerias.service';
 import { ModelosService } from 'src/app/services/modelos.service';
+import { SegurosService } from 'src/app/services/seguros.service';
 
 @Component({
   selector: 'app-modelo',
@@ -18,16 +19,27 @@ export class ModeloComponent implements OnInit {
   loadingMarcas = false;
   loadingTipos = false;
 
+
   // Arreglos con listado datos
   marcas: any = [];
   modelos: any[];
   carrocerias: any = [];
+  seguros: any = [];
+
+  // Variables auxiliares
+  aux1: any;
+  aux2: any;
+
+  // Variables de UI
+  urlTipoCarroceriaHome = 'https://placehold.it/350x220';
+  urlTipoCarroceriaForm = 'https://placehold.it/350x220';
 
 
   constructor(
     private marcaService: MarcaService,
     private tiposcarroceriasService: TiposcarroceriasService,
-    private modelosService: ModelosService
+    private modelosService: ModelosService,
+    private segurosService: SegurosService
   ) { }
 
   /*################ FORMULARIOS MAIN ################*/
@@ -57,6 +69,7 @@ export class ModeloComponent implements OnInit {
   ngOnInit() {
     this.getMarcas();
     this.getTipos();
+    this.getSeguros();
   }
 
   /*################ DETECTORES DE EVENTOS ################*/
@@ -67,31 +80,55 @@ export class ModeloComponent implements OnInit {
 
   onModeloChange(): void {
     this.loadingCarroceria = true;
-    console.log(this.modeloForm.value.modelo);
-
-    console.log('onModeloChange');
-    // actualizar la imagen
-    setTimeout(() => {
-      this.loadingCarroceria = false;
-    }, 500);
+    this.tiposcarroceriasService.getTipoByModelo(this.modeloForm.value.modelo).subscribe(
+      (res: HttpResponse<any>) => {
+        this.aux1 = res.body;
+        this.urlTipoCarroceriaHome = this.aux1[0]['vhTipo_img'];
+        this.loadingCarroceria = false;
+      },
+      (err) => {
+        console.log(err);
+        this.loadingCarroceria = false;
+      });
   }
 
   onChangeCarroceria(): void {
     this.loadingCarroceria2 = true;
-    console.log('Actualizar la imagen de carroceria');
-    console.log(this.agregarModeloForm.value.tipo);
-    setTimeout(() => {
-      this.loadingCarroceria2 = false;
-    }, 500);
+    this.tiposcarroceriasService.getTipoById(this.agregarModeloForm.value.tipo).subscribe(
+      (res: HttpResponse<any>) => {
+        this.aux2 = res.body;
+        this.urlTipoCarroceriaForm = this.aux2[0]['vhTipo_img'];
+        this.loadingCarroceria2 = false;
+      },
+      (err) => {
+        console.log(err);
+
+        this.loadingCarroceria2 = false;
+      });
   }
 
 
   /*################ ACTUADORES ################*/
   onSubmitSegurosForm() {
-    console.log('Seguros Forms');
+    let datos = {
+      seguro:
+      {
+        seguroNombre: this.segurosForm.value.seguroNombre
+      }
+    };
+    console.log(datos);
+    this.segurosService.postSeguro(datos).subscribe(
+      (res: HttpResponse<any>) => {
+        console.log(res.body);
+        this.getSeguros();
+        this.segurosForm.value.seguroNombre = '';
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
   addModelo() {
-
     let datos;
     datos = {
       modelo:
@@ -135,8 +172,6 @@ export class ModeloComponent implements OnInit {
     this.marcaService.getMarca().subscribe(
       (res: HttpResponse<any>) => {
         this.marcas = res.body;
-        console.log('getMarcas');
-        console.log(this.marcas);
         this.loadingMarcas = false;
       },
       (err) => {
@@ -150,8 +185,6 @@ export class ModeloComponent implements OnInit {
     this.modelosService.getModelo(marca).subscribe(
       (res: HttpResponse<any>) => {
         this.modelos = res.body;
-        console.log('getMarcas');
-        console.log(this.modelos);
         this.loadingModelos = false;
       },
       (err) => {
@@ -165,13 +198,24 @@ export class ModeloComponent implements OnInit {
     this.tiposcarroceriasService.getTipos().subscribe(
       (res: HttpResponse<any>) => {
         this.carrocerias = res.body;
-        console.log('getTipos');
-        console.log(this.carrocerias);
         this.loadingTipos = false;
       },
       (err) => {
         console.log(err);
         this.loadingTipos = false;
+      });
+  }
+
+  getSeguros(): void {
+    this.loadingModelos = true;
+    this.segurosService.getSeguro().subscribe(
+      (res: HttpResponse<any>) => {
+        this.seguros = res.body;
+        this.loadingModelos = false;
+      },
+      (err) => {
+        console.log(err);
+        this.loadingMarcas = false;
       });
   }
 
