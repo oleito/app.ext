@@ -46,6 +46,19 @@ export class AuthenticationInterceptor implements HttpInterceptor {
                     console.log('no hay mensajes nuevos.');
                   }
                   break;
+                case 201:
+                  console.log('201-OK');
+                  localStorage.setItem('token', event.body['token']);
+                  // console.log(localStorage.getItem('token'));
+
+                  if (event.body['msjQ'] > 0) {
+                    console.log('llama setnotification');
+                    console.log(event.body['msjs'], event.body['msjQ']);
+                    // this.appheaderService.SetNotificationMsj(event.body['msjs'], event.body['msjQ']);
+                  } else {
+                    console.log('no hay mensajes nuevos.');
+                  }
+                  break;
                 /* Caso 202 cuando se realiza el logIn */
                 case 202:
                   console.log(event);
