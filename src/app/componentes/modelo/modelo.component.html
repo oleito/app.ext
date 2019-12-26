@@ -8,12 +8,11 @@
             class="form-control"
             (change)="onMarcaChange()"
             formControlName="marca"
+            [attr.disabled]="loadingMarcas ? '' : null"
           >
-            <option value="1">Peugeot - PE</option>
-            <option value="2">Citroën - CI</option>
-            <option value="3">VolksWagen - VW</option>
-            <option>Ford</option>
-            <option>Chevrolet</option>
+            <option *ngFor="let marca of marcas" [value]="marca.idvhMarca">
+              {{marca.vhMarca}} - {{marca.vhIniciales}}
+            </option>
           </select>
         </div>
         <!-- Button trigger modal -->
@@ -35,10 +34,9 @@
             formControlName="modelo"
             [attr.disabled]="loadingModelos ? '' : null"
           >
-            <option>3008</option>
-            <option>2008</option>
-            <option>401</option>
-            <option>407</option>
+          <option *ngFor="let modelo of modelos" [value]="modelo.idvhModelo">
+            {{modelo.vhModelo}}
+          </option>
           </select>
         </div>
         <!-- Button trigger modal -->
@@ -173,6 +171,7 @@
         </button>
         <button
           type="submit"
+          (click)="addMarca()"
           class="btn btn-success"
           data-dismiss="modal"
           [disabled]="!agregarMarcaForm.valid"
@@ -224,9 +223,9 @@
             <div class="form-group col-md-6">
               <label for="marca2">Marca</label>
               <select class="form-control" id="marca2" formControlName="marca2">
-                <option value="1">Peugeot - PE</option>
-                <option value="2">Citroën - CI</option>
-                <option value="3">VolksWagen - VW</option>
+                <option *ngFor="let marca of marcas" [value]="marca.idvhMarca">
+                  {{marca.vhMarca}} - {{marca.vhIniciales}}
+                </option>
               </select>
             </div>
             <div class="form-group col-md-6">
@@ -237,9 +236,9 @@
                 formControlName="tipo"
                 (change)="onChangeCarroceria()"
               >
-                <option value="1">Sedan 4ptas</option>
-                <option value="2">Sedan 5ptas</option>
-                <option value="3">PickUp</option>
+              <option *ngFor="let tipo of carrocerias" [value]="tipo.idvhTipo">
+                {{tipo.vhTipo}}
+              </option>
               </select>
             </div>
           </div>
@@ -265,11 +264,12 @@
         </button>
         <button
           type="button"
+          (click)="addModelo()"
           class="btn btn-success"
           data-dismiss="modal"
           [disabled]="!agregarModeloForm.valid"
         >
-          Save changes
+          Cargar
         </button>
       </div>
     </div>
