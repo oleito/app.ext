@@ -77,14 +77,12 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Seguros</th>
-            <th scope="col">Last</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let seguro of seguros; let i = index">
             <th scope="row">{{ i+1 }}</th>
             <td>{{ seguro.seguro }}</td>
-            <td>Otto</td>
           </tr>
         </tbody>
       </table>
