@@ -15,7 +15,7 @@ export class ModeloComponent implements OnInit {
   // VARIABLES PARA CONTROLES SPINNES Y DISABLED
   loadingCarroceria = false;
   loadingCarroceria2 = false;
-  loadingModelos = false;
+  loadingModelos = true;
   loadingMarcas = false;
   loadingTipos = false;
 
