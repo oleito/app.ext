@@ -38,36 +38,37 @@ export class AuthenticationInterceptor implements HttpInterceptor {
                   localStorage.setItem('token', event.body['token']);
                   // console.log(localStorage.getItem('token'));
 
-                  if (event.body['msjQ'] > 0) {
-                    console.log('llama setnotification');
-                    console.log(event.body['msjs'], event.body['msjQ']);
-                    // this.appheaderService.SetNotificationMsj(event.body['msjs'], event.body['msjQ']);
-                  } else {
-                    console.log('no hay mensajes nuevos.');
-                  }
+                  // if (event.body['msjQ'] > 0) {
+                  //   console.log('llama setnotification');
+                  //   console.log(event.body['msjs'], event.body['msjQ']);
+                  //   // this.appheaderService.SetNotificationMsj(event.body['msjs'], event.body['msjQ']);
+                  // } else {
+                  //   console.log('no hay mensajes nuevos.');
+                  // }
                   break;
                 case 201:
                   console.log('201-OK');
                   localStorage.setItem('token', event.body['token']);
                   // console.log(localStorage.getItem('token'));
 
-                  if (event.body['msjQ'] > 0) {
-                    console.log('llama setnotification');
-                    console.log(event.body['msjs'], event.body['msjQ']);
-                    // this.appheaderService.SetNotificationMsj(event.body['msjs'], event.body['msjQ']);
-                  } else {
-                    console.log('no hay mensajes nuevos.');
-                  }
+                  // if (event.body['msjQ'] > 0) {
+                  //   console.log('llama setnotification');
+                  //   console.log(event.body['msjs'], event.body['msjQ']);
+                  //   // this.appheaderService.SetNotificationMsj(event.body['msjs'], event.body['msjQ']);
+                  // } else {
+                  //   console.log('no hay mensajes nuevos.');
+                  // }
                   break;
                 /* Caso 202 cuando se realiza el logIn */
                 case 202:
                   console.log(event);
                   console.log('202-loggeado');
                   localStorage.setItem('token', event.body['token']);
+
                   localStorage.setItem('nombre', this.tokenService.decodeToken(event.body['token'])['nombre']);
 
-                  console.log(localStorage.getItem('token'));
-                  console.log(localStorage.getItem('nombre'));
+                  localStorage.setItem('idUsuario', event.body['body']['usuario']['id']);
+                  console.log('Obtenemos el ID del usuario: ' + localStorage.getItem('idUsuario'));
 
                   this.authenticationService.isLoggedIn = true;
                   this.router.navigate(['/home']);

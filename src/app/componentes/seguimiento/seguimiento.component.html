@@ -61,19 +61,21 @@
           <th scope="col">Marca</th>
           <th scope="col">Modelo</th>
           <th scope="col">Dominio</th>
+          <th scope="col">Seguro</th>
           <th scope="col">Sector Actual</th>
           <th scope="col">Fecha Ingreso</th>
           <th scope="col">Horas</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Peugeot</td>
-          <td>401</td>
-          <td>PMK 802</td>
-          <td>Detailin</td>
-          <td>12/12/2020</td>
-          <td>23Hs</td>
+        <tr *ngFor="let seg of seguimientos">
+          <td>{{ seg.vhMarca }}</td>
+          <td>{{ seg.vhModelo }}</td>
+          <td>{{ seg.traza_patente }}</td>
+          <td>{{ seg.seguro }}</td>
+          <td>{{ seg.chSector }}</td>
+          <td>{{ seg.movimiento_fecha }}</td>
+          <td>{{ seg.movimiento_hora }}</td>
         </tr>
       </tbody>
     </table>
@@ -109,7 +111,9 @@
 
           <!-- Tabs Content -->
           <div class="tab-content pt-3" id="myTabContent">
+            <!-- PRIMER PANEL DATOS GRALES -->
             <div class="tab-pane fade show active" id="vehiculo" role="tabpanel" aria-labelledby="vehiculo-tab">
+              <!-- MARCA - MODELO -->
               <div class="form-row">
                 <div class="col">
                   <label for="inputMarca">Marca</label>
@@ -130,7 +134,7 @@
                   </div>
                 </div>
               </div>
-
+              <!-- PATENTE SEGURO ORDEN -->
               <div class="form-row">
                 <div class="form-group col">
                   <label for="inputDominio">Patente</label>
@@ -139,10 +143,9 @@
                 <div class="form-group col">
                   <label for="inputSeguro">Seguro</label>
                   <select id="inputSeguro" class="form-control" formControlName="seguro">
-                    <option>La caja</option>
-                    <option>Sura</option>
-                    <option>Sancord</option>
-                    <option>La segunda</option>
+                    <option *ngFor="let seguro of seguros" [value]="seguro.idseguro">
+                      {{ seguro.seguro }}
+                    </option>
                   </select>
                 </div>
                 <div class="form-group col">
@@ -151,6 +154,7 @@
                 </div>
               </div>
             </div>
+            <!-- SEGUNDO PANEL -->
             <div class="tab-pane fade" id="piezas" role="tabpanel" aria-labelledby="piezas-tab">
               <div class="row mb-2 justify-content-end">
                 <div class="col-md-3"><button type="button" class="btn btn-sm btn-success btn-block" (click)="addItems()">
@@ -158,6 +162,7 @@
                   </button></div>
 
               </div>
+              <!-- PIEZAS -->
               <div class="group-gap" formArrayName="piezas">
                 <div class="form-row" *ngFor="let item of piezas.controls; let i = index">
                   <!-- inicio -->
@@ -186,11 +191,17 @@
                 </div>
               </div>
             </div>
+            <!-- TERCER PANEL -->
             <div class="tab-pane fade" id="observaciones" role="tabpanel" aria-labelledby="observaciones-tab">
+              <!-- OBSERVACIONES -->
               <div class="form-row">
                 <div class="col">
-                  <label for="fechaIngreso">Ingreso</label>
+                  <label for="fechaIngreso">Ingreso -  Feha</label>
                   <input type="date" class="form-control form-control-sm" id="fechaIngreso" formControlName="fechaIngreso" />
+                </div>
+                <div class="col">
+                  <label for="horaIngreso">Hora</label>
+                  <input type="time" min="08:00" max="19:00"  class="form-control form-control-sm" id="horaIngreso" formControlName="horaIngreso" />
                 </div>
                 <div class="col">
                   <label for="fechaSalidaAprox">Entrega Aproximada</label>
@@ -201,7 +212,7 @@
                 <label for="exampleFormControlTextarea1">Observaciones</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="observaciones"></textarea>
               </div>
-
+              <!-- BOTON CARGA FORMULARIO -->
               <div class="row justify-content-end pt-3">
                 <div class="col-md-2">
                   <button type="submit" class="btn btn-danger btn-sm btn-block" [disabled]="!seguimientoForm.valid">
@@ -220,9 +231,9 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-primary" form="seguimientoForm" (click)="cargarSeguimiento()">
+        <!-- <button type="button" class="btn btn-primary" form="seguimientoForm" (click)="cargarSeguimiento()">
           Cargar
-        </button>
+        </button> -->
       </div>
     </div>
   </div>

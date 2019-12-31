@@ -4,6 +4,7 @@ import { HttpResponse } from '@angular/common/http';
 import { ModelosService } from 'src/app/services/modelos.service';
 import { MarcaService } from 'src/app/services/marca.service';
 import { SegurosService } from 'src/app/services/seguros.service';
+import { SeguimientoService } from 'src/app/services/seguimiento.service';
 
 @Component({
   selector: 'app-seguimiento',
@@ -17,13 +18,16 @@ export class SeguimientoComponent implements OnInit {
   marcas: any[];
   seguros: any[];
 
+  seguimientos: any[];
+
   loadingModelos = true;
 
   constructor(
     public formBuilder: FormBuilder,
     private modelosService: ModelosService,
     private marcaService: MarcaService,
-    private segurosService: SegurosService) { }
+    private segurosService: SegurosService,
+    private seguimientoService: SeguimientoService) { }
 
   ngOnInit() {
     this.seguimientoForm = this.formBuilder.group({
@@ -34,13 +38,15 @@ export class SeguimientoComponent implements OnInit {
       orden: new FormControl('', Validators.required),
       piezas: this.formBuilder.array([]),
       fechaIngreso: new FormControl('', Validators.required),
+      horaIngreso: new FormControl('', Validators.required),
       fechaSalidaAprox: new FormControl('', Validators.required),
       observaciones: new FormControl('', Validators.required)
     });
-    this.addItems();
-
+    this.getSeguimientos();
     this.getMarcas();
     this.getSeguros();
+
+    this.addItems();
   }
 
   /*############### De reactive Form ###############*/
@@ -82,6 +88,19 @@ export class SeguimientoComponent implements OnInit {
       });
   }
 
+  getSeguimientos(): void {
+    this.seguimientoService.getSeguimiento().subscribe(
+      (res: HttpResponse<any>) => {
+        this.seguimientos = res.body;
+        console.log('litado seguimientos');
+        console.log(this.seguimientos);
+      },
+      (err) => {
+        console.log(err);
+
+      });
+  }
+
   /*############# De Control de Acciones #############*/
   onMarcaChange(): void {
     console.log(this.seguimientoForm.value.marca);
@@ -107,13 +126,21 @@ export class SeguimientoComponent implements OnInit {
   /*############### Submit del formulario ###############*/
   onSubmit() {
     let datos;
-    let isValid = this.seguimientoForm.valid;
     datos = {
       seguimiento: this.seguimientoForm.value
     };
 
-    console.log(isValid);
+    datos['seguimiento']['idUsuario'] = localStorage.getItem('idUsuario');
     console.log(datos);
+    this.seguimientoService.postSeguimiento(datos).subscribe(
+      (res: HttpResponse<any>) => {
+        console.log(res.body);
+        this.getSeguimientos();
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
   cargarSeguimiento() {
     if (this.seguimientoForm.valid) {

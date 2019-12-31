@@ -207,15 +207,12 @@ export class ModeloComponent implements OnInit {
   }
 
   getSeguros(): void {
-    this.loadingModelos = true;
     this.segurosService.getSeguro().subscribe(
       (res: HttpResponse<any>) => {
         this.seguros = res.body;
-        this.loadingModelos = false;
       },
       (err) => {
         console.log(err);
-        this.loadingMarcas = false;
       });
   }
 
