@@ -1,4 +1,5 @@
 <main role="main" class="container-fluid">
+  <!-- Cabeceras -->
   <div class="row text-center">
     <div class="col">
       <h4>
@@ -31,219 +32,167 @@
       </h4>
     </div>
   </div>
-  <div class="row text-center">
-    <div class="col">
-      <a href="" class="text-dark" data-toggle="modal" data-target="#exampleModal">
-        <!-- inicio -->
-        <div class="card box-shadow mb-2 bg-light">
-          <div class="card-body text-left p-2">
-            <h5 class="card-title pricing-card-title mb-0">PIS 802</h5>
-            <ul class="list-unstyled mb-0">
-              <li>Amarok - Rojo</li>
-              <li>Seguro: SURA</li>
-              <li>Ingreso: 12/12/2019</li>
-            </ul>
-          </div>
-        </div>
-        <!-- fin --></a
-      >
+  <!-- .Cabeceras -->
 
-      <!-- inicio -->
-      <div class="card box-shadow mb-2 bg-light">
-        <div class="card-body text-left p-2">
-          <h5 class="card-title pricing-card-title mb-0">PIS 802</h5>
-          <ul class="list-unstyled mb-0">
-            <li>Amarok - Rojo</li>
-            <li>Seguro: SURA</li>
-            <li>Ingreso: 12/12/2019</li>
-          </ul>
+  <!-- Contenido -->
+  <div class="row text-center">
+    <!-- columna INGRESO -->
+    <div class="col">
+      <!-- NgFor -->
+      <div *ngFor="let vehiculo of vehiculos; let i = index">
+        <div *ngIf="vehiculo.chSector == 'Ingreso' ">
+          <a href="" (click)="actualizarModal(vehiculo.idtraza)" class="text-dark" data-toggle="modal" data-target="#exampleModal">
+            <div class="card box-shadow mb-2 bg-light">
+              <div class="card-body text-left p-2">
+                <h5 class="card-title pricing-card-title mb-0">{{ vehiculo.traza_patente}}</h5>
+                <ul class="list-unstyled mb-0">
+                  <li>{{ vehiculo.vhModelo }} - Rojo</li>
+                  <li>Seguro: {{ vehiculo.seguro }}</li>
+                  <li>Sector: {{ vehiculo.chSector }}</li>
+                  <li>Ingreso: 12/12/2019</li>
+                </ul>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
-      <!-- fin -->
+      <!-- ./NgFor -->
     </div>
     <div class="col border-left border-dark">
-      <!-- inicio -->
-      <div class="card box-shadow mb-2 bg-light">
-        <div class="card-body text-left p-2">
-          <h5 class="card-title pricing-card-title mb-0">PIS 802</h5>
-          <ul class="list-unstyled mb-0">
-            <li>Amarok - Rojo</li>
-            <li>Seguro: SURA</li>
-            <li>Ingreso: 12/12/2019</li>
-          </ul>
+      <!-- NgFor -->
+      <div *ngFor="let vehiculo of vehiculos; let i = index">
+        <div *ngIf="vehiculo.chSector == 'Desarme' ">
+          <a href="" (click)="actualizarModal(vehiculo.idtraza)" class="text-dark" data-toggle="modal" data-target="#exampleModal">
+            <div class="card box-shadow mb-2 bg-light">
+              <div class="card-body text-left p-2">
+                <h5 class="card-title pricing-card-title mb-0">{{ vehiculo.traza_patente}}</h5>
+                <ul class="list-unstyled mb-0">
+                  <li>{{ vehiculo.vhModelo }} - Rojo</li>
+                  <li>Seguro: {{ vehiculo.seguro }}</li>
+                  <li>Sector: {{ vehiculo.chSector }}</li>
+                  <li>Ingreso: 12/12/2019</li>
+                </ul>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
-      <!-- fin --><!-- inicio -->
-      <div class="card box-shadow mb-2 bg-light">
-        <div class="card-body text-left p-2">
-          <h5 class="card-title pricing-card-title mb-0">PIS 802</h5>
-          <ul class="list-unstyled mb-0">
-            <li>Amarok - Rojo</li>
-            <li>Seguro: SURA</li>
-            <li>Ingreso: 12/12/2019</li>
-          </ul>
+      <!-- ./NgFor -->
+      <hr class="hr">
+      <!-- NgFor -->
+      <div *ngFor="let vehiculo of vehiculos; let i = index">
+        <div *ngIf="vehiculo.chSector == 'Reparacion' ">
+          <a href="" (click)="actualizarModal(vehiculo.idtraza)" class="text-dark" data-toggle="modal" data-target="#exampleModal">
+            <div class="card box-shadow mb-2 bg-light">
+              <div class="card-body text-left p-2">
+                <h5 class="card-title pricing-card-title mb-0">{{ vehiculo.traza_patente}}</h5>
+                <ul class="list-unstyled mb-0">
+                  <li>{{ vehiculo.vhModelo }} - Rojo</li>
+                  <li>Seguro: {{ vehiculo.seguro }}</li>
+                  <li>Sector: {{ vehiculo.chSector }}</li>
+                  <li>Ingreso: 12/12/2019</li>
+                </ul>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
-      <!-- fin --><!-- inicio -->
-      <div class="card box-shadow mb-2 bg-light">
-        <div class="card-body text-left p-2">
-          <h5 class="card-title pricing-card-title mb-0">PIS 802</h5>
-          <ul class="list-unstyled mb-0">
-            <li>Amarok - Rojo</li>
-            <li>Seguro: SURA</li>
-            <li>Ingreso: 12/12/2019</li>
-          </ul>
-        </div>
-      </div>
-      <!-- fin -->
+      <!-- ./NgFor -->
     </div>
     <div class="col border-left border-dark">
-      <!-- inicio -->
-      <div class="card box-shadow mb-2 bg-light">
-        <div class="card-body text-left p-2">
-          <h5 class="card-title pricing-card-title mb-0">PIS 802</h5>
-          <ul class="list-unstyled mb-0">
-            <li>Amarok - Rojo</li>
-            <li>Seguro: SURA</li>
-            <li>Ingreso: 12/12/2019</li>
-          </ul>
+      <!-- NgFor -->
+      <div *ngFor="let vehiculo of vehiculos; let i = index">
+        <div *ngIf="vehiculo.chSector == 'Preparacion' ">
+          <a href="" (click)="actualizarModal(vehiculo.idtraza)" class="text-dark" data-toggle="modal" data-target="#exampleModal">
+            <div class="card box-shadow mb-2 bg-light">
+              <div class="card-body text-left p-2">
+                <h5 class="card-title pricing-card-title mb-0">{{ vehiculo.traza_patente}}</h5>
+                <ul class="list-unstyled mb-0">
+                  <li>{{ vehiculo.vhModelo }} - Rojo</li>
+                  <li>Seguro: {{ vehiculo.seguro }}</li>
+                  <li>Sector: {{ vehiculo.chSector }}</li>
+                  <li>Ingreso: 12/12/2019</li>
+                </ul>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
-      <!-- fin --><!-- inicio -->
-      <div class="card box-shadow mb-2 bg-light">
-        <div class="card-body text-left p-2">
-          <h5 class="card-title pricing-card-title mb-0">PIS 802</h5>
-          <ul class="list-unstyled mb-0">
-            <li>Amarok - Rojo</li>
-            <li>Seguro: SURA</li>
-            <li>Ingreso: 12/12/2019</li>
-          </ul>
-        </div>
-      </div>
-      <!-- fin -->
+      <!-- ./NgFor -->
     </div>
     <div class="col border-left border-dark">
-      <!-- inicio -->
-      <div class="card box-shadow mb-2 bg-light">
-        <div class="card-body text-left p-2">
-          <h5 class="card-title pricing-card-title mb-0">PIS 802</h5>
-          <ul class="list-unstyled mb-0">
-            <li>Amarok - Rojo</li>
-            <li>Seguro: SURA</li>
-            <li>Ingreso: 12/12/2019</li>
-          </ul>
+      <!-- NgFor -->
+      <div *ngFor="let vehiculo of vehiculos; let i = index">
+        <div *ngIf="vehiculo.chSector == 'Pintura' ">
+          <a href="" (click)="actualizarModal(vehiculo.idtraza)" class="text-dark" data-toggle="modal" data-target="#exampleModal">
+            <div class="card box-shadow mb-2 bg-light">
+              <div class="card-body text-left p-2">
+                <h5 class="card-title pricing-card-title mb-0">{{ vehiculo.traza_patente}}</h5>
+                <ul class="list-unstyled mb-0">
+                  <li>{{ vehiculo.vhModelo }} - Rojo</li>
+                  <li>Seguro: {{ vehiculo.seguro }}</li>
+                  <li>Sector: {{ vehiculo.chSector }}</li>
+                  <li>Ingreso: 12/12/2019</li>
+                </ul>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
-      <!-- fin --><!-- inicio -->
-      <div class="card box-shadow mb-2 bg-light">
-        <div class="card-body text-left p-2">
-          <h5 class="card-title pricing-card-title mb-0">PIS 802</h5>
-          <ul class="list-unstyled mb-0">
-            <li>Amarok - Rojo</li>
-            <li>Seguro: SURA</li>
-            <li>Ingreso: 12/12/2019</li>
-          </ul>
-        </div>
-      </div>
-      <!-- fin --><!-- inicio -->
-      <div class="card box-shadow mb-2 bg-light">
-        <div class="card-body text-left p-2">
-          <h5 class="card-title pricing-card-title mb-0">PIS 802</h5>
-          <ul class="list-unstyled mb-0">
-            <li>Amarok - Rojo</li>
-            <li>Seguro: SURA</li>
-            <li>Ingreso: 12/12/2019</li>
-          </ul>
-        </div>
-      </div>
-      <!-- fin --><!-- inicio -->
-      <div class="card box-shadow mb-2 bg-light">
-        <div class="card-body text-left p-2">
-          <h5 class="card-title pricing-card-title mb-0">PIS 802</h5>
-          <ul class="list-unstyled mb-0">
-            <li>Amarok - Rojo</li>
-            <li>Seguro: SURA</li>
-            <li>Ingreso: 12/12/2019</li>
-          </ul>
-        </div>
-      </div>
-      <!-- fin -->
+      <!-- ./NgFor -->
     </div>
     <div class="col border-left border-dark">
-      <!-- inicio -->
-      <div class="card box-shadow mb-2 bg-light">
-        <div class="card-body text-left p-2">
-          <h5 class="card-title pricing-card-title mb-0">PIS 802</h5>
-          <ul class="list-unstyled mb-0">
-            <li>Amarok - Rojo</li>
-            <li>Seguro: SURA</li>
-            <li>Ingreso: 12/12/2019</li>
-          </ul>
+      <!-- NgFor -->
+      <div *ngFor="let vehiculo of vehiculos; let i = index">
+        <div *ngIf="vehiculo.chSector == 'Armado' ">
+          <a href="" (click)="actualizarModal(vehiculo.idtraza)" class="text-dark" data-toggle="modal" data-target="#exampleModal">
+            <div class="card box-shadow mb-2 bg-light">
+              <div class="card-body text-left p-2">
+                <h5 class="card-title pricing-card-title mb-0">{{ vehiculo.traza_patente}}</h5>
+                <ul class="list-unstyled mb-0">
+                  <li>{{ vehiculo.vhModelo }} - Rojo</li>
+                  <li>Seguro: {{ vehiculo.seguro }}</li>
+                  <li>Sector: {{ vehiculo.chSector }}</li>
+                  <li>Ingreso: 12/12/2019</li>
+                </ul>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
-      <!-- fin -->
+      <!-- ./NgFor -->
     </div>
     <div class="col border-left border-dark">
-      <!-- inicio -->
-      <div class="card box-shadow mb-2 bg-light">
-        <div class="card-body text-left p-2">
-          <h5 class="card-title pricing-card-title mb-0">PIS 802</h5>
-          <ul class="list-unstyled mb-0">
-            <li>Amarok - Rojo</li>
-            <li>Seguro: SURA</li>
-            <li>Ingreso: 12/12/2019</li>
-          </ul>
+      <!-- NgFor -->
+      <div *ngFor="let vehiculo of vehiculos; let i = index">
+        <div *ngIf="vehiculo.chSector == 'Estetica' ">
+          <a href="" (click)="actualizarModal(vehiculo.idtraza)" class="text-dark" data-toggle="modal" data-target="#exampleModal">
+            <div class="card box-shadow mb-2 bg-light">
+              <div class="card-body text-left p-2">
+                <h5 class="card-title pricing-card-title mb-0">{{ vehiculo.traza_patente}}</h5>
+                <ul class="list-unstyled mb-0">
+                  <li>{{ vehiculo.vhModelo }} - Rojo</li>
+                  <li>Seguro: {{ vehiculo.seguro }}</li>
+                  <li>Sector: {{ vehiculo.chSector }}</li>
+                  <li>Ingreso: 12/12/2019</li>
+                </ul>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
-      <!-- fin --><!-- inicio -->
-      <div class="card box-shadow mb-2 bg-light">
-        <div class="card-body text-left p-2">
-          <h5 class="card-title pricing-card-title mb-0">PIS 802</h5>
-          <ul class="list-unstyled mb-0">
-            <li>Amarok - Rojo</li>
-            <li>Seguro: SURA</li>
-            <li>Ingreso: 12/12/2019</li>
-          </ul>
-        </div>
-      </div>
-      <!-- fin --><!-- inicio -->
-      <div class="card box-shadow mb-2 bg-light">
-        <div class="card-body text-left p-2">
-          <h5 class="card-title pricing-card-title mb-0">PIS 802</h5>
-          <ul class="list-unstyled mb-0">
-            <li>Amarok - Rojo</li>
-            <li>Seguro: SURA</li>
-            <li>Ingreso: 12/12/2019</li>
-          </ul>
-        </div>
-      </div>
-      <!-- fin -->
+      <!-- ./NgFor -->
     </div>
   </div>
 </main>
 
-
-
 <!-- Modal -->
-<div
-  class="modal fade"
-  id="exampleModal"
-  data-backdrop="static"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">VW Amarok - ABC 123</h5>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -257,50 +206,18 @@
 
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item">
-            <a
-              class="nav-link active"
-              id="reparacion-tab"
-              data-toggle="tab"
-              href="#reparacion"
-              role="tab"
-              aria-controls="reparacion"
-              aria-selected="true"
-              >Reparacion</a
-            >
+            <a class="nav-link active" id="reparacion-tab" data-toggle="tab" href="#reparacion" role="tab" aria-controls="reparacion" aria-selected="true">Reparacion</a>
           </li>
 
           <li class="nav-item">
-            <a
-              class="nav-link"
-              id="seguimiento-tab"
-              data-toggle="tab"
-              href="#seguimiento"
-              role="tab"
-              aria-controls="seguimiento"
-              aria-selected="false"
-              >Seguimiento</a
-            >
+            <a class="nav-link" id="seguimiento-tab" data-toggle="tab" href="#seguimiento" role="tab" aria-controls="seguimiento" aria-selected="false">Seguimiento</a>
           </li>
           <li class="nav-item">
-            <a
-              class="nav-link"
-              id="contact-tab"
-              data-toggle="tab"
-              href="#contact"
-              role="tab"
-              aria-controls="contact"
-              aria-selected="false"
-              >Documentos</a
-            >
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Documentos</a>
           </li>
         </ul>
         <div class="tab-content" id="myTabContent">
-          <div
-            class="tab-pane fade show active"
-            id="reparacion"
-            role="tabpanel"
-            aria-labelledby="reparacion-tab"
-          >
+          <div class="tab-pane fade show active" id="reparacion" role="tabpanel" aria-labelledby="reparacion-tab">
             <table class="table table-sm mt-3">
               <thead>
                 <tr>
@@ -324,12 +241,7 @@
               </tbody>
             </table>
           </div>
-          <div
-            class="tab-pane fade"
-            id="seguimiento"
-            role="tabpanel"
-            aria-labelledby="seguimiento-tab"
-          >
+          <div class="tab-pane fade" id="seguimiento" role="tabpanel" aria-labelledby="seguimiento-tab">
             <table class="table table-sm mt-3">
               <thead>
                 <tr>
@@ -352,22 +264,13 @@
               </tbody>
             </table>
           </div>
-          <div
-            class="tab-pane fade"
-            id="contact"
-            role="tabpanel"
-            aria-labelledby="contact-tab"
-          >
+          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
             <h5>Todavia no está listo.</h5>
           </div>
         </div>
       </div>
       <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-xs btn-secondary"
-          data-dismiss="modal"
-        >
+        <button type="button" class="btn btn-xs btn-secondary" data-dismiss="modal">
           Close
         </button>
         <button type="button" class="btn btn-xs btn-primary">Avanzar</button>
