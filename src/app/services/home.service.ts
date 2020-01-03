@@ -12,4 +12,9 @@ export class HomeService {
     console.log('getVehiculosSeguimiento');
     return this.dataService.getData('traza');
   }
+
+  getMovimientosByTraza(idtraza) {
+    console.log('getModelo');
+    return this.dataService.getData('traza/mov?idtraza=' + idtraza);
+  }
 }

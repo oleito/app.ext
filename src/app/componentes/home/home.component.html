@@ -246,20 +246,15 @@
               <thead>
                 <tr>
                   <th scope="col">Sector</th>
-                  <th scope="col">Entrada</th>
-                  <th scope="col">Salida</th>
+                  <th scope="col">Ingreso</th>
+                  <th scope="col">Registro</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Desarme</td>
-                  <td>12/12/2019 9:40am</td>
-                  <td>12/12/2019 16:13am</td>
-                </tr>
-                <tr>
-                  <td>Reparacion</td>
-                  <td>12/12/2019 16:13am</td>
-                  <td>13/12/2019 10:30am</td>
+                <tr *ngFor="let mov of movimientos">
+                  <td> {{ mov.chSector }} </td>
+                  <td> {{ mov.movimiento_fecha }} {{mov.movimiento_hora}} </td>
+                  <td> {{ mov.usuario_nombre }} {{mov.usuario_apellido}} </td>
                 </tr>
               </tbody>
             </table>

@@ -11,6 +11,8 @@ import { HttpResponse } from '@angular/common/http';
 export class HomeComponent implements OnInit {
 
   vehiculos: any[];
+  movimientos: any[];
+
   loadingModalData = true;
 
   constructor(private router: Router, private homeService: HomeService) { }
@@ -32,10 +34,22 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  actualizarModal(indice) {
+  actualizarModal(idtraza) {
     this.loadingModalData = true;
-    console.log(indice);
-    
+
+    this.homeService.getMovimientosByTraza(idtraza).subscribe(
+      (res: HttpResponse<any>) => {
+        this.movimientos = res.body;
+        console.log(this.movimientos);
+      }, (err) => {
+        console.log(err)
+      }
+
+    )
+    console.log(idtraza);
+
+
+
     setTimeout(() => {
       this.loadingModalData = false;
     }, 2000);
