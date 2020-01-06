@@ -218,7 +218,14 @@
         </ul>
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="reparacion" role="tabpanel" aria-labelledby="reparacion-tab">
-            <table class="table table-sm mt-3">
+
+            <div class="d-flex justify-content-center py-5" *ngIf="loadingpiezasData">
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+
+            <table class="table table-sm mt-3" *ngIf="!loadingpiezasData">
               <thead>
                 <tr>
                   <th scope="col">Pieza</th>
@@ -226,23 +233,23 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Paragolpe delantero</td>
-                  <td>Pintar</td>
-                </tr>
-                <tr>
-                  <td>Tapa baul</td>
-                  <td>Reparar</td>
-                </tr>
-                <tr>
-                  <td>Guardabarro delantero derecho</td>
-                  <td>Reemplazar</td>
+                <tr *ngFor="let pieza of piezas">
+                  <td> {{ pieza.pieza_nombre }} </td>
+                  <td> {{ pieza.pieza_accion }} </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <div class="tab-pane fade" id="seguimiento" role="tabpanel" aria-labelledby="seguimiento-tab">
-            <table class="table table-sm mt-3">
+
+            <div class="d-flex justify-content-center py-5" *ngIf="loadingMovData">
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+
+            <table class="table table-sm mt-3" *ngIf="!loadingMovData">
+
               <thead>
                 <tr>
                   <th scope="col">Sector</th>
@@ -268,7 +275,7 @@
         <button type="button" class="btn btn-xs btn-secondary" data-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-xs btn-primary">Avanzar</button>
+        <button type="button" class="btn btn-xs btn-primary" (click)="avanzarTraza()">Avanzar Sector</button>
       </div>
     </div>
   </div>

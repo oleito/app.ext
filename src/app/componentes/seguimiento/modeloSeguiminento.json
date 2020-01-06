@@ -1,0 +1,38 @@
+[
+  {
+    "seguimiento": {
+      "marca": "27",
+      "modelo": "17",
+      "patente": "987ABC",
+      "seguro": "2",
+      "orden": "232323",
+      "piezas": {
+        "0": { "pieza": "Puerta Delantera derecha", "accion": "Reemplazar" },
+        "1": { "pieza": "Guadabarro delantero derecho.", "accion": "Pintar" }
+      },
+      "fechaIngreso": "2020-01-01",
+      "horaIngreso": "09:02",
+      "fechaSalidaAprox": "2020-12-13",
+      "observaciones": "Todo OK",
+      "idUsuario": "1"
+    }
+  },
+  {
+    "seguimiento": {
+      "marca": "28",
+      "modelo": "18",
+      "patente": "123ABC",
+      "seguro": "8",
+      "orden": "11223344",
+      "piezas": {
+        "0": { "pieza": "Puerta delantera derecha", "accion": "Pintar" },
+        "1": { "pieza": "Puerta delantera izquierda", "accion": "Pintar" }
+      },
+      "fechaIngreso": "2020-01-01",
+      "horaIngreso": "08:00",
+      "fechaSalidaAprox": "2020-12-16",
+      "observaciones": "Nada que acotar",
+      "idUsuario": "1"
+    }
+  }
+]

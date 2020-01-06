@@ -52,8 +52,8 @@ export class LoginComponent implements OnInit {
     };
 
 
-    console.log(user);
-    console.log(datos);
+    // console.log(user);
+    // console.log(datos);
 
     this.authenticationService.loginWithEmail(datos).subscribe((res: HttpResponse<any>) => {
       // console.log(res);

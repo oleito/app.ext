@@ -14,7 +14,16 @@ export class HomeService {
   }
 
   getMovimientosByTraza(idtraza) {
-    console.log('getModelo');
+    console.log('getMovimientosByTraza');
     return this.dataService.getData('traza/mov?idtraza=' + idtraza);
+  }
+
+  getPiezasByTraza(idtraza) {
+    console.log('getPiezasByTraza');
+    return this.dataService.getData('traza/piezas?idtraza=' + idtraza);
+  }
+
+  avanzarTraza(idtraza, idusuario) {
+    return this.dataService.putData('traza/avanzar?idtraza=' + idtraza + '&idusuario=' + idusuario, null);
   }
 }

@@ -131,6 +131,7 @@ export class SeguimientoComponent implements OnInit {
     };
 
     datos['seguimiento']['idUsuario'] = localStorage.getItem('idUsuario');
+    console.log('datos a enviar');
     console.log(datos);
     this.seguimientoService.postSeguimiento(datos).subscribe(
       (res: HttpResponse<any>) => {
