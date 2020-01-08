@@ -21,6 +21,7 @@ export class SeguimientoComponent implements OnInit {
   seguimientos: any[];
 
   loadingModelos = true;
+  loadingMarcas = true;
 
   constructor(
     public formBuilder: FormBuilder,
@@ -40,6 +41,7 @@ export class SeguimientoComponent implements OnInit {
       fechaIngreso: new FormControl('', Validators.required),
       horaIngreso: new FormControl('', Validators.required),
       fechaSalidaAprox: new FormControl('', Validators.required),
+      esperandoRepuestos: new FormControl('', Validators.required),
       observaciones: new FormControl('', Validators.required)
     });
     this.getSeguimientos();
@@ -68,12 +70,15 @@ export class SeguimientoComponent implements OnInit {
 
   /*############### Obtencion de datos ###############*/
   getMarcas(): void {
+    this.loadingMarcas = true;
     this.marcaService.getMarca().subscribe(
       (res: HttpResponse<any>) => {
         this.marcas = res.body;
+        this.loadingMarcas = false;
       },
       (err) => {
         console.log(err);
+        this.loadingMarcas = true;
       });
   }
 

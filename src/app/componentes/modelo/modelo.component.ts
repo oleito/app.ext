@@ -141,6 +141,7 @@ export class ModeloComponent implements OnInit {
     this.modelosService.postModelo(datos).subscribe(
       (res: HttpResponse<any>) => {
         console.log(res.body);
+        this.getModelos(this.modeloForm.value.marca);
       },
       (err) => {
         console.log(err);
