@@ -1,19 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from './../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
   // Declaracion de variables
-  apiUrl: string;
+  apiUrl: string = environment.apiUrl;
 
   constructor(private httpClient: HttpClient) {
-
-    //this.apiUrl = 'http://localhost/Proyectos/api.ext/public/'; // SERVIDOR LOCAL
-    this.apiUrl = "http://api.postventa.parisautos.com.ar/public/";// servidor REMOTO
-
   }
 
   /**

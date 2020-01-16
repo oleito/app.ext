@@ -28,7 +28,7 @@
             "scripts": []
           },
           "configurations": {
-            "production": {
+            "prod": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -51,6 +51,14 @@
                   "maximumError": "5mb"
                 }
               ]
+            },
+            "test": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.test.ts"
+                }
+              ]
             }
           }
         },
@@ -60,8 +68,11 @@
             "browserTarget": "appext:build"
           },
           "configurations": {
-            "production": {
-              "browserTarget": "appext:build:production"
+            "prod": {
+              "browserTarget": "appext:build:prod"
+            },
+            "test": {
+              "browserTarget": "appext:build:test"
             }
           }
         },
