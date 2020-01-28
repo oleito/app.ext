@@ -1,13 +1,11 @@
 <div class="text-center" cz-shortcut-listen="true">
-  <form class="form-signin" [formGroup]="logInForm" (ngSubmit)="onSubmit()">
-    <img
-      class="mb-4"
-      src="https://placehold.it/80x80"
-      alt=""
-      width="72"
-      height="72"
+  <img
+      class="mb-4 img-fluid"
+      src="assets/img/login/img-login.jpg"
     />
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+  <form class="form-signin" [formGroup]="logInForm" (ngSubmit)="onSubmit()">
+    
+    <h1 class="h3 mb-3 font-weight-normal">Ingresar</h1>
     <label for="inputEmail" class="sr-only">Email address</label>
     <input
       type="email"
@@ -22,22 +20,22 @@
       class="form-control"
       formControlName="userPassword"
     />
-    <div class="checkbox mb-3">
+    <!-- <div class="checkbox mb-3">
       <label> <input type="checkbox" value="remember-me" /> Remember me </label>
-    </div>
+    </div> -->
     <button
       class="btn btn-lg btn-primary btn-block"
       type="submit"
       [disabled]="!logInForm.valid"
     >
-      Sign in
+      Ingresar al sistema
     </button>
     <div class="spinner-border text-primary" role="status" *ngIf="tryingLogIn">
-      <span class="sr-only">Loading...</span>
+      <span class="sr-only">Cargando...</span>
     </div>
     <div class="alert alert-danger" role="alert" *ngIf="logInErr">
       Algo malo paso! Por favor intenta mas tarde.
     </div>
-    <p class="mt-5 mb-3 text-muted">© 2017-2019</p>
+    <p class="mt-5 mb-3 text-muted">© 2017-2020</p>
   </form>
 </div>

@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.tempInterval = setInterval(() => {
       console.log('intentando obtener datos.');
       this.obtenerVehiculos();
-    }, 10000);
+    }, 60000);
   }
 
   // ngOnInit() {
