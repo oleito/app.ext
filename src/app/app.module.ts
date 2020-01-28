@@ -13,6 +13,7 @@ import { HomeComponent } from './componentes/home/home.component';
 import { SeguimientoComponent } from './componentes/seguimiento/seguimiento.component';
 import { ModeloComponent } from './componentes/modelo/modelo.component';
 import { SegurosComponent } from './componentes/seguros/seguros.component';
+import { OrdenInternaComponent } from './componentes/orden-interna/orden-interna.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SegurosComponent } from './componentes/seguros/seguros.component';
     HeaderComponent,
     SeguimientoComponent,
     ModeloComponent,
-    SegurosComponent
+    SegurosComponent,
+    OrdenInternaComponent
   ],
   imports: [
     BrowserModule,
