@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { OrdenService } from 'src/app/services/orden.service';
 import { HttpResponse } from '@angular/common/http';
 
+import * as html2pdf from 'html2pdf.js';
+
 @Component({
   selector: 'app-orden-interna',
   templateUrl: './orden-interna.component.html',
@@ -48,5 +50,36 @@ export class OrdenInternaComponent implements OnInit {
         this.loadingpiezasData = false;
       }
     );
+
+    setTimeout(() => {
+      this.generarPDF();
+
+    }, 5000);
+  }
+
+  generarPDF() {
+    // orden = this.datos.orden_idorden;
+
+    const options = {
+      filename: 'nombre.pdf',
+      image: {
+        type: 'jpeg',
+        quality: 0.98
+      },
+      html2canvas: { useCORS: true },
+      jsPDF: {
+        unit: 'in',
+        format: 'a4',
+        orientation: 'portrait'
+      },
+      useCORS: true
+    };
+
+    const content: Element = document.getElementById('toPDF');
+
+    html2pdf()
+      .from(content)
+      .set(options)
+      .save();
   }
 }
