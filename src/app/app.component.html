@@ -1,5 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div *ngIf="router.url != '/login'">
+<div *ngIf="router.url != '/login' && router.url != '/orden/*'">
   <app-header></app-header>
 </div>
 <router-outlet></router-outlet>

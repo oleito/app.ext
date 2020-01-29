@@ -1,0 +1,60 @@
+<div class="orden-interna mt-5 pt-3">
+  <div class="container">
+
+    <!-- DATOS DEL VEHICULO -->
+    <div class="row text-center">
+      <table class="table table-bordered mb-0 datos-orden">
+        <thead>
+          <tr>
+            <th scope="col">Vehiculo</th>
+            <th scope="col">RC</th>
+            <th scope="col">Seguro</th>
+            <th scope="col">Orden</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ datos.vhModelo }}</td>
+            <td> </td>
+            <td>{{ datos.seguro }}</td>
+            <td>{{ datos.orden_idorden }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- ./DATOS DEL VEHICULO -->
+
+    <!-- IMAGEN TIPO -->
+    <div class="row my-2">
+      <div class="col-md-10">
+        <img class="img-fluid" src="https://placehold.it/920x300" alt="">
+      </div>
+      <div class="col-md-2 align-self-center">
+        <p>Pintar</p>
+        <p>Reparar</p>
+        <p>Reemplazar</p>
+      </div>
+    </div>
+    <!-- ./IMAGEN TIPO -->
+
+    <!-- PIEZAS A REPARAR -->
+    <div class="row">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Pieza</th>
+            <th scope="col">Accion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pieza of piezas">
+            <td> {{ pieza.pieza_nombre }} </td>
+            <td> {{ pieza.pieza_accion }} </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- PIEZAS A REPARAR -->
+
+  </div>
+</div>

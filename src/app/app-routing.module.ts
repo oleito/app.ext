@@ -5,6 +5,7 @@ import { HomeComponent } from './componentes/home/home.component';
 import { ModeloComponent } from './componentes/modelo/modelo.component';
 import { SeguimientoComponent } from './componentes/seguimiento/seguimiento.component';
 import { SegurosComponent } from './componentes/seguros/seguros.component';
+import { OrdenInternaComponent } from './componentes/orden-interna/orden-interna.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'modelo', component: ModeloComponent },
   { path: 'seguimiento', component: SeguimientoComponent },
   { path: 'seguro', component: SegurosComponent },
+  { path: 'orden/:numero', component: OrdenInternaComponent },
 ];
 
 @NgModule({

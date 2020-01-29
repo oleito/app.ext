@@ -10,6 +10,7 @@ import { HttpResponse } from '@angular/common/http';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
 
   isLogedIn = false;
@@ -25,7 +26,7 @@ export class LoginComponent implements OnInit {
   });
 
   ngOnInit() {
-    // this.onSubmit();
+    this.onSubmit();
   }
 
   onSubmit() {
@@ -35,29 +36,23 @@ export class LoginComponent implements OnInit {
     let datos: DataLogin;
     const user: UserLogin = this.logInForm.value;
 
-    datos = {
-      user:
-      {
-        userName: this.logInForm.value.userName,
-        userPassword: this.logInForm.value.userPassword
-      }
-    };
-
     // datos = {
     //   user:
     //   {
-    //     userName: 'sistemas@parisautos.com.ar',
-    //     userPassword: '1q2w3eparisNadarisca32'
+    //     userName: this.logInForm.value.userName,
+    //     userPassword: this.logInForm.value.userPassword
     //   }
     // };
 
-
-    // console.log(user);
-    // console.log(datos);
+    datos = {
+      user:
+      {
+        userName: 'sistemas@parisautos.com.ar',
+        userPassword: '1q2w3eparisNadarisca32'
+      }
+    };
 
     this.authenticationService.loginWithEmail(datos).subscribe((res: HttpResponse<any>) => {
-      // console.log(res);
-      // console.log(res.body);
       this.authenticationService.isLoggedIn = true;
       this.isLogedIn = true;
       this.tryingLogIn = false;
@@ -67,6 +62,7 @@ export class LoginComponent implements OnInit {
       this.tryingLogIn = false;
       this.logInErr = true;
     });
+
   }
 
 }
