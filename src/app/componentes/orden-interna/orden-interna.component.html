@@ -1,8 +1,11 @@
 <div class="orden-interna mt-5 pt-3">
   <div class="container">
+    <a href="javascript:window.print()">Imprimir</a>
+  </div>
+  <div class="container-fluid" id="toPrint">
 
     <!-- DATOS DEL VEHICULO -->
-    <div class="row text-center">
+    <div class="row text-center py-2">
       <table class="table table-bordered mb-0 datos-orden">
         <thead>
           <tr>
@@ -25,20 +28,26 @@
     <!-- ./DATOS DEL VEHICULO -->
 
     <!-- IMAGEN TIPO -->
-    <div class="row my-2">
-      <div class="col-md-10">
-        <img class="img-fluid" src="https://placehold.it/920x300" alt="">
+    <div class="row py-2">
+      <div class="col-md-12">
+        <img class="img-fluid" width="110%" src="{{ datos.vhTipo_img_all }}" alt="">
       </div>
-      <div class="col-md-2 align-self-center">
+    </div>
+    <div class="row">
+      <div class="col">
         <p>Pintar</p>
+      </div>
+      <div class="col">
         <p>Reparar</p>
+      </div>
+      <div class="col">
         <p>Reemplazar</p>
       </div>
     </div>
     <!-- ./IMAGEN TIPO -->
 
     <!-- PIEZAS A REPARAR -->
-    <div class="row">
+    <div class="row py-2">
       <table class="table table-bordered">
         <thead>
           <tr>
