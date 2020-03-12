@@ -23,7 +23,7 @@ export class HomeService {
     return this.dataService.getData('traza/piezas?idtraza=' + idtraza);
   }
 
-  avanzarTraza(idtraza, idusuario) {
-    return this.dataService.putData('traza/avanzar?idtraza=' + idtraza + '&idusuario=' + idusuario, null);
+  avanzarTraza(idtraza, idusuario, datos) {
+    return this.dataService.putData('traza/avanzar?idtraza=' + idtraza + '&idusuario=' + idusuario, datos);
   }
 }

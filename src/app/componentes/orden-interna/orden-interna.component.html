@@ -6,7 +6,7 @@
 
     <!-- DATOS DEL VEHICULO -->
     <div class="row text-center py-2">
-      <table class="table table-bordered mb-0 datos-orden">
+      <table class="table table-bordered border-dark mb-0 datos-orden">
         <thead>
           <tr>
             <th scope="col">Vehiculo</th>
@@ -28,23 +28,28 @@
     <!-- ./DATOS DEL VEHICULO -->
 
     <!-- IMAGEN TIPO -->
+    <div class="row">
+      <div class="col">
+        <h3>Pintar</h3>
+      </div>
+      <div class="col">
+        <h3>Reparar</h3>
+      </div>
+      <div class="col">
+        <h3>Reemplazar</h3>
+      </div>
+    </div>
     <div class="row py-2">
       <div class="col-md-12">
         <img class="img-fluid" width="110%" src="{{ datos.vhTipo_img_all }}" alt="">
       </div>
     </div>
+
     <div class="row">
-      <div class="col">
-        <p>Pintar</p>
-      </div>
-      <div class="col">
-        <p>Reparar</p>
-      </div>
-      <div class="col">
-        <p>Reemplazar</p>
-      </div>
+      Observaciones: {{datos.traza_observaciones}}
     </div>
     <!-- ./IMAGEN TIPO -->
+
 
     <!-- PIEZAS A REPARAR -->
     <div class="row py-2">

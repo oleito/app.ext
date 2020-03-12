@@ -17,7 +17,8 @@ export class OrdenInternaComponent implements OnInit {
     seguro: '',
     vhMarca: '',
     vhModelo: '',
-    vhTipo_img_all: ''
+    vhTipo_img_all: '',
+    traza_observaciones: ''
   };
 
 
