@@ -7,6 +7,10 @@ import { DataService } from './data.service';
   providedIn: 'root'
 })
 export class AuthenticationService {
+
+
+  /* SIN DESARROLLAR */
+  
   isLoggedIn = false;
 
   constructor(private dataService: DataService) {}

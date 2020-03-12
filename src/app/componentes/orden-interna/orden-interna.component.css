@@ -4,3 +4,7 @@
 .datos-orden {
   font-size: 2.4em;
 }
+
+.table-bordered {
+  border-width: 3px;
+}

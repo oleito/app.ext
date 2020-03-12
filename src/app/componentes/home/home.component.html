@@ -3,32 +3,32 @@
   <div class="row text-center">
     <div class="col">
       <h4>
-        Ingreso <small><span class="badge badge-secondary">2</span></small>
+        Ingreso <small><span class="badge badge-secondary"> {{ vhIngreso }} </span></small>
       </h4>
     </div>
     <div class="col">
       <h4>
-        Chapa <small><span class="badge badge-secondary">3</span></small>
+        Chapa <small><span class="badge badge-secondary"> {{ vhChapa }} </span></small>
       </h4>
     </div>
     <div class="col">
       <h4>
-        Preparacion <small><span class="badge badge-secondary">2</span></small>
+        Preparacion <small><span class="badge badge-secondary"> {{ vhPreparacion }} </span></small>
       </h4>
     </div>
     <div class="col">
       <h4>
-        Pintura <small><span class="badge badge-secondary">4</span></small>
+        Pintura <small><span class="badge badge-secondary"> {{ vhReparacion }} </span></small>
       </h4>
     </div>
     <div class="col">
       <h4>
-        Armado <small><span class="badge badge-secondary">1</span></small>
+        Armado <small><span class="badge badge-secondary"> {{ vhArmado }} </span></small>
       </h4>
     </div>
     <div class="col">
       <h4>
-        Estetica <small><span class="badge badge-secondary">3</span></small>
+        Estetica <small><span class="badge badge-secondary"> {{ vhEstetica }} </span></small>
       </h4>
     </div>
   </div>
@@ -39,7 +39,7 @@
     <!-- columna INGRESO -->
     <div class="col">
       <!-- NgFor -->
-      <div *ngFor="let vehiculo of vehiculos; let i = index">
+      <div *ngFor="let vehiculo of vehiculos">
         <div *ngIf="vehiculo.chSector == 'Ingreso' ">
           <a href="" (click)="actualizarModal(vehiculo.idtraza)" class="text-dark" data-toggle="modal" data-target="#exampleModal">
             <div class="card box-shadow mb-2 bg-light">
@@ -268,7 +268,7 @@
             </table>
           </div>
           <div class="tab-pane fade p-4" id="contact" role="tabpanel" aria-labelledby="documentos-tab">
-            <button type="button" class="btn btn-primary"data-dismiss="modal" [routerLink]="['/orden', idTraza]">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" [routerLink]="['/orden', idTraza]">
               Ver Orden interna
             </button>
           </div>
@@ -278,7 +278,15 @@
         <button type="button" class="btn btn-xs btn-secondary" data-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-xs btn-primary" (click)="avanzarTraza()">Avanzar Sector</button>
+        <form [formGroup]="avanzarForm" class="form-inline" (ngSubmit)="onSubmitAvanzarForm()">
+          <div>
+            <input type="date" class="form-control form-control-sm mr-1" id="fechaIngreso" formControlName="avanzarFecha" />
+          </div>
+          <div>
+            <input type="time" min="08:00" max="19:00" class="form-control form-control-sm mr-1" id="horaIngreso" formControlName="avanzarHora" />
+          </div>
+          <button type="submit" class="btn btn-xs btn-primary">Avanzar Sector</button>
+        </form>
       </div>
     </div>
   </div>
