@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { HomeService } from 'src/app/services/home.service';
 import { HttpResponse } from '@angular/common/http';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { OrdenService } from 'src/app/services/orden.service';
 
 @Component({
   selector: 'app-home',
@@ -31,9 +32,19 @@ export class HomeComponent implements OnInit, OnDestroy {
   vhArmado = 0;
   vhEstetica = 0;
 
+  datos = {
+    orden_idorden: 0,
+    seguro: '',
+    vhMarca: '',
+    vhModelo: '',
+    vhTipo_img_all: '',
+    traza_observaciones: ''
+  };
+
   constructor(
     private router: Router,
-    private homeService: HomeService
+    private homeService: HomeService,
+    private ordenService: OrdenService
   ) { }
 
   avanzarForm = new FormGroup({
@@ -73,6 +84,16 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   actualizarModal(idtraza) {
+    this.ordenService.getDatosByTraza(idtraza).subscribe(
+      (res: HttpResponse<any>) => {
+        console.log('datosByTraza');
+        console.log(res);
+        this.datos = res.body[0];
+        console.log(this.datos);
+      }
+    );
+    /*********************** */
+
     this.idTraza = idtraza;
 
     this.movimientos = [];
@@ -103,6 +124,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   avanzarTraza() {
     console.log('Avanza la cosa');
   }
+
 
   onSubmitAvanzarForm() {
     let datos = {

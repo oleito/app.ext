@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   });
 
   ngOnInit() {
-    this.onSubmit();
+   // this.onSubmit();
   }
 
   onSubmit() {
@@ -36,21 +36,21 @@ export class LoginComponent implements OnInit {
     let datos: DataLogin;
     const user: UserLogin = this.logInForm.value;
 
+     datos = {
+       user:
+       {
+         userName: this.logInForm.value.userName,
+         userPassword: this.logInForm.value.userPassword
+       }
+     };
+
     // datos = {
     //   user:
     //   {
-    //     userName: this.logInForm.value.userName,
-    //     userPassword: this.logInForm.value.userPassword
+    //     userName: 'sistemas@parisautos.com.ar',
+    //     userPassword: '1q2w3eparisNadarisca32'
     //   }
     // };
-
-    datos = {
-      user:
-      {
-        userName: 'sistemas@parisautos.com.ar',
-        userPassword: '1q2w3eparisNadarisca32'
-      }
-    };
 
     this.authenticationService.loginWithEmail(datos).subscribe((res: HttpResponse<any>) => {
       this.authenticationService.isLoggedIn = true;
